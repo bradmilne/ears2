@@ -1,5 +1,13 @@
-<%= link_to "Perfect Ear Training", root_path, :class => 'brand' %>
-<ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</a>
+
+<strong><%= link_to "Perfect Ear Training", root_path, :class => 'brand' %></strong>
+
+<div class="nav-collapse collapse">
+  <ul class="nav pull-right">
   <% if user_signed_in? %>
     <li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
@@ -20,3 +28,4 @@
     <% end %>
   <% end %>
 </ul>
+</div>
