@@ -1,2 +1,21 @@
-<h1>Content#gold</h1>
-<p>Find me in app/views/content/gold.html.erb</p>
+
+  <h1>Lessons</h1>
+  <p>Select any lesson to start learning.</p>
+
+ 
+  	<div class="span6">
+  	  <h2>Ear Training</h2>
+      <% @lessons_et.each do |lesson| %>
+        <%= lesson.title %><br>
+      <% end %>
+    </div
+
+    <div class="span6">
+      <h2>Chord Progressions</h2>
+      <% @lessons_cp.each do |lesson| %>
+        <%= lesson.title %><br>
+      <% end %>
+    </div>
+
+
+
