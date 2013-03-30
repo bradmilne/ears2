@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322005130) do
+ActiveRecord::Schema.define(:version => 20130330152333) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,6 +52,23 @@ ActiveRecord::Schema.define(:version => 20130322005130) do
     t.string   "category"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "lesson_id"
+    t.string   "question"
+    t.string   "answer"
+    t.integer  "octave"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "audioclip_mp3_file_name"
+    t.string   "audioclip_mp3_content_type"
+    t.integer  "audioclip_mp3_file_size"
+    t.datetime "audioclip_mp3_updated_at"
+    t.string   "audioclip_wav_file_name"
+    t.string   "audioclip_wav_content_type"
+    t.integer  "audioclip_wav_file_size"
+    t.datetime "audioclip_wav_updated_at"
   end
 
   create_table "roles", :force => true do |t|
