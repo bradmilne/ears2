@@ -1,4 +1,6 @@
 Ears2::Application.routes.draw do
+  get "lessons/show"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -17,4 +19,5 @@ Ears2::Application.routes.draw do
     put 'update_card', :to => 'registrations#update_card'
   end
   resources :users
+  resources :lessons, :only => [:show]
 end

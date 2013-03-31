@@ -3,4 +3,5 @@
 
 <% @lessons_et.each do |lesson| %>
   <%= lesson.title %><br>
+  <%= link_to 'Check out lesson', lesson_path(lesson) %>
  <% end %>
