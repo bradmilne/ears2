@@ -1,0 +1,44 @@
+
+<br>
+<br>
+<h3>LESSON TITLE: <%= @lesson.title %></h3>
+
+<br>
+<h3>Answer Questions Below</h3>
+
+
+<%= form_tag(lesson_quizzes_path, :method => "post") do %>
+  <%= label_tag(:user_answer1, @question1.question) %>
+  <audio src="<%= @question1.audioclip_mp3.url %>" preload="auto" controls></audio>
+  <%= hidden_field_tag(:correct_answer1, @question1.answer) %>
+  <%= hidden_field_tag(:octave1, @question1.octave) %>
+  <%= hidden_field_tag(:lesson_id, @user_id) %>
+  <%= hidden_field_tag(:user_id, @lesson.id) %>
+  <%= text_field_tag(:user_answer1) %>
+
+  <%= label_tag(:user_answer2, @question2.question) %>
+  <audio src="<%= @question2.audioclip_mp3.url %>" preload="auto" controls></audio>
+  <%= hidden_field_tag :correct_answer2, @question2.answer %>
+  <%= hidden_field_tag(:octave2, @question2.octave) %>
+  <%= hidden_field_tag(:lesson_id, @lesson.id) %>
+  <%= hidden_field_tag(:user_id, @user_id) %>
+  <%= text_field_tag(:user_answer2) %>
+
+  <%= label_tag(:user_answer3, @question3.question) %>
+  <audio src="<%= @question3.audioclip_mp3.url %>" preload="auto" controls></audio>
+  <%= hidden_field_tag :correct_answer3, @question3.answer %>
+  <%= hidden_field_tag(:octave3, @question3.octave) %>
+  <%= hidden_field_tag(:lesson_id, @lesson.id) %>
+  <%= hidden_field_tag(:user_id, @user_id) %>
+  <%= text_field_tag(:user_answer3) %>
+  <br>
+  <%= submit_tag("Submit Answers") %>
+<% end %>
+
+
+<br>
+user id = <%= @user_id %>
+<h4>Test questions</h4>
+<p>Question 1 = <%= @question1.question %>  Answer = <%= @question1.answer %> </p>
+<p>Question 2 = <%= @question2.question %>  Answer = <%= @question2.answer %></p>
+<p>Question 3 = <%= @question3.question %>  Answer = <%= @question3.answer %></p>

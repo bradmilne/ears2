@@ -20,4 +20,7 @@ Ears2::Application.routes.draw do
   end
   resources :users
   resources :lessons, :only => [:show]
+  resources :lessons do
+    resources :quizzes, :only => [:index, :show, :new, :create]
+  end
 end

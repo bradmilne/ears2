@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   before_save :update_stripe
   before_destroy :cancel_subscription
 
+  has_many :quizzes
+
   def update_plan(role)
     self.role_ids = []
     self.add_role(role.name)

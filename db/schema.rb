@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330152333) do
+ActiveRecord::Schema.define(:version => 20130404145050) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(:version => 20130330152333) do
     t.string   "audioclip_wav_content_type"
     t.integer  "audioclip_wav_file_size"
     t.datetime "audioclip_wav_updated_at"
+  end
+
+  create_table "quizzes", :force => true do |t|
+    t.decimal  "score",      :precision => 5, :scale => 3
+    t.decimal  "decimal",    :precision => 5, :scale => 3
+    t.integer  "lesson_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "roles", :force => true do |t|

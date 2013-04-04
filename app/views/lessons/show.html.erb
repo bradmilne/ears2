@@ -2,9 +2,11 @@
 <p>Read on below...</p>
 
 
-
     <div class="well">
     <%= @lesson.title %> <br>
     <%= @lesson.description %> <br>
     </div>
 
+
+<%= link_to "Take Quiz?", new_lesson_quiz_path(@lesson) %>
+<br>
