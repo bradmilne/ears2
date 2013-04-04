@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   before_destroy :cancel_subscription
 
   has_many :quizzes
+  has_many :responses
 
   def update_plan(role)
     self.role_ids = []
