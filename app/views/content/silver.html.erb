@@ -1,7 +1,12 @@
-<h1>Lessons</h1>
+<p>You're doing great! Your're averagig x% this week compared to your overall average of 15%</p>
+<hr>
+<h2>Ear Training Lessons</h2>
 <p>Select any lesson below to start learning.</p>
 
+
 <% @lessons_et.each do |lesson| %>
+<div class="well span4">
   <%= lesson.title %><br>
-  <%= link_to 'Check out lesson', lesson_path(lesson) %>
+  <%= link_to 'Take quiz', new_lesson_quiz_path(lesson) %> or <%= link_to 'Check out lesson', lesson_path(lesson) %>
+ </div>	
  <% end %>
