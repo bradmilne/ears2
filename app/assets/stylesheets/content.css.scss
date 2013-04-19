@@ -1,0 +1,45 @@
+.lesson_box {
+	background: #fff;
+	height: 225px;
+	margin-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align:center;
+	-webkit-border-top-right-radius: 6px;
+	-moz-border-radius-topright: 6px;
+	border-top-right-radius: 6px;
+	-webkit-border-top-left-radius: 6px;
+	-moz-border-radius-topleft: 6px;
+	border-top-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-left-radius: 6px;
+}
+
+.lesson_box_top {
+	height: 30px;
+	border-bottom: 2px solid orange;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+
+
+.lesson_box p {
+	font-size: 15px;
+	line-height: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: left;
+	
+}
+
+.button_to { display:inline-block;}
+
+.lesson_box_options {
+	display:inline;  
+	margin: 0 auto;
+}
