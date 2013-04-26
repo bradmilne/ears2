@@ -5,7 +5,7 @@
 
 
 <% @lessons_et.each do |lesson| %>
-<div class="lesson_box span4">
+<div class="lesson_box span4 clearfix">
   <div class="lesson_box_top">
   	<h4><%= lesson.title %></h4>
   </div>
@@ -17,7 +17,7 @@
    </div
 </br>
     <div class="lesson_box_options">
-      <%= button_to 'Check out lesson', lesson_path(lesson), {:class => "btn btn-primary"} %> or <%= link_to 'Take quiz', new_lesson_quiz_path(lesson) %>
+      <%= link_to 'Check out lesson', lesson_path(lesson), {:class => "btn btn-primary"} %> or <%= link_to 'Take quiz', new_lesson_quiz_path(lesson) %>
     </div>
 </div>	
  <% end %>
