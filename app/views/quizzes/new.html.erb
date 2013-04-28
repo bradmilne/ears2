@@ -9,31 +9,54 @@
 <div class="row">
 <div class="quiz_box span9 offset1">
 <%= form_tag(lesson_quizzes_path, :method => "post") do %>
-  <%= label_tag(:user_answer1, @question1.question) %>
-  <audio src="<%= @question1.audioclip_mp3.url %>" preload="auto" controls></audio>
-  <%= hidden_field_tag(:correct_answer1, @question1.answer) %>
-  <%= hidden_field_tag(:octave1, @question1.octave) %>
-  <%= hidden_field_tag(:lesson_id, @user_id) %>
-  <%= hidden_field_tag(:user_id, @lesson.id) %>
-  <%= select_tag(:user_answer1, options_for_select([['Root', 'Root'], ['Minor 2nd', 'Minor 2nd'], ['Major 2nd', 'Major 2nd'], ['Minor 3rd', 'Minor 3rd'], ['Major 3rd', 'Major 3rd'], ['Perfect 4th', 'Perfect 4th'], ['Augmented 4th', 'Augmented 4th'],['Perfect 5th', 'Perfect 5th'], ['Minor 6th', 'Minor 6th'], ['Major 6th', 'Major 6th'], ['Minor 7th', 'Minor 7th'], ['Major 7th', 'Major 7th']])) %>
 
-  <%= label_tag(:user_answer2, @question2.question) %>
-  <audio src="<%= @question2.audioclip_mp3.url %>" preload="auto" controls></audio>
-  <%= hidden_field_tag :correct_answer2, @question2.answer %>
-  <%= hidden_field_tag(:octave2, @question2.octave) %>
-  <%= hidden_field_tag(:lesson_id, @lesson.id) %>
-  <%= hidden_field_tag(:user_id, @user_id) %>
-   <%= select_tag(:user_answer1, options_for_select([['Root', 'Root'], ['Minor 2nd', 'Minor 2nd'], ['Major 2nd', 'Major 2nd'], ['Minor 3rd', 'Minor 3rd'], ['Major 3rd', 'Major 3rd'], ['Perfect 4th', 'Perfect 4th'], ['Augmented 4th', 'Augmented 4th'],['Perfect 5th', 'Perfect 5th'], ['Minor 6th', 'Minor 6th'], ['Major 6th', 'Major 6th'], ['Minor 7th', 'Minor 7th'], ['Major 7th', 'Major 7th']])) %>
+  <div class="question">
+    <p>Question 1</p>
+    <audio controls>
+      <source src="<%= @question1.audioclip_mp3.url %>" preload="auto">
+      <source src="<%= @question1.audioclip_wav.url %>" preload="auto">
+      Your browser does not support MP3 or WAV files. 
+    </audio>
+    <%= hidden_field_tag(:correct_answer1, @question1.answer) %>
+    <%= hidden_field_tag(:octave1, @question1.octave) %>
+    <%= hidden_field_tag(:lesson_id, @user_id) %>
+    <%= hidden_field_tag(:user_id, @lesson.id) %>
+   <span>Answer 1:  <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
+  </div>
+  <hr>
 
-  <%= label_tag(:user_answer3, @question3.question) %>
-  <audio src="<%= @question3.audioclip_mp3.url %>" preload="auto" controls></audio>
-  <%= hidden_field_tag :correct_answer3, @question3.answer %>
-  <%= hidden_field_tag(:octave3, @question3.octave) %>
-  <%= hidden_field_tag(:lesson_id, @lesson.id) %>
-  <%= hidden_field_tag(:user_id, @user_id) %>
-  <%= select_tag(:user_answer1, options_for_select([['Root', 'Root'], ['Minor 2nd', 'Minor 2nd'], ['Major 2nd', 'Major 2nd'], ['Minor 3rd', 'Minor 3rd'], ['Major 3rd', 'Major 3rd'], ['Perfect 4th', 'Perfect 4th'], ['Augmented 4th', 'Augmented 4th'],['Perfect 5th', 'Perfect 5th'], ['Minor 6th', 'Minor 6th'], ['Major 6th', 'Major 6th'], ['Minor 7th', 'Minor 7th'], ['Major 7th', 'Major 7th']])) %>
+  <div class="question">
+    <p>Question 2</p>
+    <audio controls>
+      <source src="<%= @question2.audioclip_mp3.url %>" preload="auto">
+      <source src="<%= @question2.audioclip_wav.url %>" preload="auto">
+      Your browser does not support MP3 or WAV files. 
+    </audio>
+    <%= hidden_field_tag :correct_answer2, @question2.answer %>
+    <%= hidden_field_tag(:octave2, @question2.octave) %>
+    <%= hidden_field_tag(:lesson_id, @lesson.id) %>
+    <%= hidden_field_tag(:user_id, @user_id) %>
+    <span>Answer 2: <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
+  </div>
+  <hr>
+  
+
+  <div class="question question_last">
+    <p>Question 3</p>
+    <audio controls>
+      <source src="<%= @question3.audioclip_mp3.url %>" preload="auto">
+      <source src="<%= @question3.audioclip_wav.url %>" preload="auto">
+      Your browser does not support MP3 or WAV files. 
+    </audio>
+    <%= hidden_field_tag :correct_answer3, @question3.answer %>
+    <%= hidden_field_tag(:octave3, @question3.octave) %>
+    <%= hidden_field_tag(:lesson_id, @lesson.id) %>
+    <%= hidden_field_tag(:user_id, @user_id) %>
+    <span>Answer 3: <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
+  </div>
+  
   <br>
-  <%= submit_tag("Submit Answers") %>
+  <%= submit_tag("Submit Answers", {:class => "btn btn-primary"}) %>
 <% end %>
 </div>
 </div>
