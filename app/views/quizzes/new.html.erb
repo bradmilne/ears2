@@ -1,12 +1,13 @@
 
 <br>
 <br>
-<h3>LESSON TITLE: <%= @lesson.title %></h3>
+<h1>Ear Training Quiz For: <%= @lesson.title %></h1>
 
 <br>
-<h3>Answer Questions Below</h3>
+<h3>Select Answers and Submit Quiz</h3>
 
-
+<div class="row">
+<div class="quiz_box span9 offset1">
 <%= form_tag(lesson_quizzes_path, :method => "post") do %>
   <%= label_tag(:user_answer1, @question1.question) %>
   <audio src="<%= @question1.audioclip_mp3.url %>" preload="auto" controls></audio>
@@ -14,7 +15,7 @@
   <%= hidden_field_tag(:octave1, @question1.octave) %>
   <%= hidden_field_tag(:lesson_id, @user_id) %>
   <%= hidden_field_tag(:user_id, @lesson.id) %>
-  <%= text_field_tag(:user_answer1) %>
+  <%= select_tag(:user_answer1, options_for_select([['Root', 'Root'], ['Minor 2nd', 'Minor 2nd'], ['Major 2nd', 'Major 2nd'], ['Minor 3rd', 'Minor 3rd'], ['Major 3rd', 'Major 3rd'], ['Perfect 4th', 'Perfect 4th'], ['Augmented 4th', 'Augmented 4th'],['Perfect 5th', 'Perfect 5th'], ['Minor 6th', 'Minor 6th'], ['Major 6th', 'Major 6th'], ['Minor 7th', 'Minor 7th'], ['Major 7th', 'Major 7th']])) %>
 
   <%= label_tag(:user_answer2, @question2.question) %>
   <audio src="<%= @question2.audioclip_mp3.url %>" preload="auto" controls></audio>
@@ -22,7 +23,7 @@
   <%= hidden_field_tag(:octave2, @question2.octave) %>
   <%= hidden_field_tag(:lesson_id, @lesson.id) %>
   <%= hidden_field_tag(:user_id, @user_id) %>
-  <%= text_field_tag(:user_answer2) %>
+   <%= select_tag(:user_answer1, options_for_select([['Root', 'Root'], ['Minor 2nd', 'Minor 2nd'], ['Major 2nd', 'Major 2nd'], ['Minor 3rd', 'Minor 3rd'], ['Major 3rd', 'Major 3rd'], ['Perfect 4th', 'Perfect 4th'], ['Augmented 4th', 'Augmented 4th'],['Perfect 5th', 'Perfect 5th'], ['Minor 6th', 'Minor 6th'], ['Major 6th', 'Major 6th'], ['Minor 7th', 'Minor 7th'], ['Major 7th', 'Major 7th']])) %>
 
   <%= label_tag(:user_answer3, @question3.question) %>
   <audio src="<%= @question3.audioclip_mp3.url %>" preload="auto" controls></audio>
@@ -30,15 +31,14 @@
   <%= hidden_field_tag(:octave3, @question3.octave) %>
   <%= hidden_field_tag(:lesson_id, @lesson.id) %>
   <%= hidden_field_tag(:user_id, @user_id) %>
-  <%= text_field_tag(:user_answer3) %>
+  <%= select_tag(:user_answer1, options_for_select([['Root', 'Root'], ['Minor 2nd', 'Minor 2nd'], ['Major 2nd', 'Major 2nd'], ['Minor 3rd', 'Minor 3rd'], ['Major 3rd', 'Major 3rd'], ['Perfect 4th', 'Perfect 4th'], ['Augmented 4th', 'Augmented 4th'],['Perfect 5th', 'Perfect 5th'], ['Minor 6th', 'Minor 6th'], ['Major 6th', 'Major 6th'], ['Minor 7th', 'Minor 7th'], ['Major 7th', 'Major 7th']])) %>
   <br>
   <%= submit_tag("Submit Answers") %>
 <% end %>
+</div>
+</div>
 
 
-<br>
-user id = <%= @user_id %>
-<h4>Test questions</h4>
-<p>Question 1 = <%= @question1.question %>  Answer = <%= @question1.answer %> </p>
-<p>Question 2 = <%= @question2.question %>  Answer = <%= @question2.answer %></p>
-<p>Question 3 = <%= @question3.question %>  Answer = <%= @question3.answer %></p>
+<hr>
+
+<p>Congrats in advance! You're on your way to being a better musician.</p>
