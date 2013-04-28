@@ -23,7 +23,11 @@
     </div>
     </br>
     <div class="audio_options">
-     <audio src="<%= question.audioclip_mp3.url %>" preload="auto" controls></audio>
+      <audio controls>
+        <source src="<%= question.audioclip_mp3.url %>" preload="auto">
+        <source src="<%= question.audioclip_wav.url %>" preload="auto">
+        Your browser does not support MP3 or WAV files. 
+      </audio>
     </div>
 </div>	
 <% end %>
