@@ -16,28 +16,28 @@ class QuizzesController < ApplicationController
     @score = @question1_score + @question2_score + @question3_score
     @lesson_id = params[:lesson_id]
     if @score == 3 
-      flash[:notice] = "Unbelievable! You got #{@score} out of 3!"
+      flash[:notice] = "Unbelievable! You got #{@score} out of 3 on that one!"
       @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
       render 'show'
     elsif @score == 2
-      flash[:notice] = "Good work! You got #{@score} out of 3!"
+      flash[:notice] = "Good work! You got #{@score} out of 3 one that one!"
       @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
       render 'show'    
     elsif @score == 1
-      flash[:notice] = "Hmmm.. you might need some more practice. You got #{@score} out of 3."
+      flash[:notice] = "Hmmm.. you might need some more practice. You got #{@score} out of 3 on that one."
       @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
       render 'show'
     else
-      flash[:notice] = "Keep at it and you'll start to get it! You got #{@score} out of 3."
+      flash[:notice] = "Keep at it and you'll start to get it! You got #{@score} out of 3 on that one."
       @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
       Response.create!(:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
