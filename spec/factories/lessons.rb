@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :lesson do
-    title "MyString"
-    description "MyText"
-    category "MyString"
+    title "Sample Lesson"
+    description "A sample lesson for everyone that wants to learn"
+    category "Ear Training"
   end
 end
