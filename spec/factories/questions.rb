@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :question do
     lesson_id 1
-    question "MyString"
-    answer "MyString"
+    question "What do you hear?"
+    answer "Major 3rd"
     octave 1
   end
 end

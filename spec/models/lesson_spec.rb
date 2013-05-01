@@ -10,6 +10,7 @@ describe Lesson do
   	@lesson.should be_an_instance_of Lesson
   end
 
+
   describe 'title' do
 
     it 'should have a title created' do
@@ -19,6 +20,7 @@ describe Lesson do
     it 'should have a title thats a string' do
       @lesson.title.should be_a(String)
     end
+
   end
 
   describe 'description' do
