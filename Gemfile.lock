@@ -212,6 +212,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    shoulda-matchers (2.0.0)
+      activesupport (>= 3.0.0)
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -272,6 +274,7 @@ DEPENDENCIES
   rolify (>= 3.2.0)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
+  shoulda-matchers
   simple_form (>= 2.0.4)
   stripe (>= 1.7.10)
   stripe_event (>= 0.4.0)

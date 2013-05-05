@@ -6,6 +6,10 @@ describe Lesson do
   	@lesson = FactoryGirl.create(:lesson)
   end
 
+  it 'should validate presence of title' do
+    @lesson.should validate_presence_of(:title)
+  end
+
   it 'should be an instance of Lesson' do
   	@lesson.should be_an_instance_of Lesson
   end
