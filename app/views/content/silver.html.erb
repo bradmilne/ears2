@@ -1,4 +1,4 @@
-<p>You're doing great! Your're averagig x% this week compared to your overall average of 15%</p>
+<p><%= @average_score %> <%= @highest_score %></p>
 <hr>
 <h2>Ear Training Lessons</h2>
 <p>Select any lesson below to start learning.</p>
@@ -13,7 +13,7 @@
     <p>Add a description to each lesson here? The major scale tones are the most important tones are they combine to form a major chord. They consist of the root, major 3rd and major 5th. You'll find them the easiest so let's start here.</p>
   </div>
   <div class="lesson_stats">
-  	<p>Your average score is 18% and your best is 19%</p>
+  	<p>Your average score is <%= lesson.avg_score %>% and your best is <%= lesson.max_score %>%</p>
    </div
 </br>
     <div class="lesson_box_options">

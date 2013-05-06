@@ -90,5 +90,24 @@ class User < ActiveRecord::Base
     UserMailer.expire_email(self).deliver
     destroy
   end
-  
+
+  def best_score_per_quiz
+    if !Quiz.where(:user_id => self.id).maximum(:score)
+      quiz = 0
+    else
+      quiz = Quiz.where(:user_id => self.id).maximum(:score)
+      quiz = (((quiz)/5)*100).to_i
+      quiz = "Your best quiz score so far is #{quiz}%."
+    end
+  end
+
+  def average_quiz_score
+    if Quiz.where(:user_id => self.id).count < 1
+      quiz = "Welcome! Get started by choosing a lesson."
+    else 
+      quiz = Quiz.where(:user_id => self.id).average(:score)
+      quiz = (((quiz)/5)*100).to_i
+      quiz = "Your overall average quiz score is #{quiz}%."
+    end
+  end
 end
