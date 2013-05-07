@@ -3,22 +3,16 @@ class LessonsController < ApplicationController
   	@lesson = Lesson.find(params[:id])
   	@questions = Question.where(:lesson_id => params[:id])
   	@questions.each do |question|
-  	  answer = question[:answer]	
-  	  if Response.where(:correct_answer => "{answer}") < 1
-  	  	question[:average] = "No responses match"
-  	  else
-  	  	question[:average] = "Responses match"
-  	  end
-  	end
-
-  	@response_answer = Response.where(:lesson_id => params[:id], :user_id => current_user.id).first
-  	@question_answer = Question.where(:lesson_id => params[:id]).first
-    @responsemaj3 = Response.where(:correct_answer => "Major 3rd").first
-    @questionmaj3 = Question.where(:answer => @responsemaj3.correct_answer).first
-    if @questionmaj3.answer == @responsemaj3.correct_answer
-    	@correctness = "True"
-    else
-    	@correctness = "False"
-    end
+  	  total_answers = Response.where(:user_id => current_user.id, :question_id => question.id).count
+  	  total_correct = Response.where(:user_id => current_user.id, :question_id => question.id, :result => "true").count
+  	  question[:avg_score] = "#{total_correct}/#{total_answers}"
+  	  #if Response.where(:user_id => current_user.id, :question_id => question.id).count < 1
+        #question[:avg_score] = Response.where(:user_id => current_user.id, :question_id => question.id).count
+      #else
+      	#correct_answers = Response.where(:user_id => current_user.id, :question_id => question.id, :result => true).count
+      	#total_answers    = Response.where(:user_id => current_user.id, :question_id => question.id).count
+        #question[:avg_score] = (correct_answers/total_answers)*100.to_i
+      #end
+     end
   end
 end

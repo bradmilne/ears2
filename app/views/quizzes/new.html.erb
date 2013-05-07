@@ -18,6 +18,7 @@
       Your browser does not support MP3 or WAV files. 
     </audio>
     <%= hidden_field_tag(:correct_answer1, @question1.answer) %>
+    <%= hidden_field_tag :question_id_1, @question1.id %>
     <%= hidden_field_tag(:octave1, @question1.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @lesson.id) %>
@@ -34,6 +35,7 @@
       Your browser does not support MP3 or WAV files. 
     </audio>
     <%= hidden_field_tag :correct_answer2, @question2.answer %>
+    <%= hidden_field_tag :question_id_2, @question2.id %>
     <%= hidden_field_tag(:octave2, @question2.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
@@ -51,6 +53,7 @@
       Your browser does not support MP3 or WAV files. 
     </audio>
     <%= hidden_field_tag :correct_answer3, @question3.answer %>
+    <%= hidden_field_tag :question_id_3, @question3.id %>
     <%= hidden_field_tag(:octave3, @question3.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
