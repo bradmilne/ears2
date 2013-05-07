@@ -19,9 +19,10 @@
     </audio>
     <%= hidden_field_tag(:correct_answer1, @question1.answer) %>
     <%= hidden_field_tag(:octave1, @question1.octave) %>
-    <%= hidden_field_tag(:lesson_id, @user_id) %>
+    <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @lesson.id) %>
    <span>Answer 1:  <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
+   Answer: <%= @question1.answer %>
   </div>
   <hr>
 
@@ -36,7 +37,8 @@
     <%= hidden_field_tag(:octave2, @question2.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
-    <span>Answer 2: <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
+    <span>Answer 2: <%= select_tag(:user_answer2, options_for_select(@question_answers)) %></span>
+    Answer: <%= @question2.answer %>
   </div>
   <hr>
   
@@ -52,7 +54,8 @@
     <%= hidden_field_tag(:octave3, @question3.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
-    <span>Answer 3: <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
+    <span>Answer 3: <%= select_tag(:user_answer3, options_for_select(@question_answers)) %></span>
+    Answer: <%= @question3.answer %>
   </div>
   
   <br>
