@@ -1,5 +1,7 @@
 Ears2::Application.routes.draw do
   get "lessons/show"
+  get "stats/show"
+
 
   ActiveAdmin.routes(self)
 
@@ -23,4 +25,6 @@ Ears2::Application.routes.draw do
   resources :lessons do
     resources :quizzes, :only => [:index, :show, :new, :create]
   end
+
+
 end

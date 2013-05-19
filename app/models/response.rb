@@ -15,4 +15,6 @@ class Response < ActiveRecord::Base
       nil
     end
   end
+
+ 
 end

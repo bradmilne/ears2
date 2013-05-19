@@ -110,4 +110,15 @@ class User < ActiveRecord::Base
       quiz = "Your overall average quiz score is #{quiz}%."
     end
   end
+
+  def ear_training_stats_hash(interval)
+    total_answers = Response.where(:user_id => self.id, :correct_answer => interval).count
+    total_correct = Response.where(:user_id => self.id, :correct_answer => interval, :result => "True").count
+    #results_hash[:total_answers] = total_answers
+    #results_hash[:total_correct] = total_correct
+    results_hash = Hash.new
+    results_hash = {"Total answer" => total_answers, 
+                    "Total correct" => total_correct
+                  }
+  end
 end
