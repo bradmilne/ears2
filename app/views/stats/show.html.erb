@@ -1,7 +1,155 @@
-Hi THERE <%= @user.name %>
+<h4>Ear Training Stats</h4>
 <br><br>
-<%= @results_hash %>
 
-<br>
-<%= @results_hash["Total answer"] %>
+
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+		<th>Interval</th>
+		<th>Accuracy</th>
+		<th>Accuracy Last 30 Days</th>
+		<th>Octave 1</th>
+		<th>Octave 2</th>
+		<th>Octave 3</th>
+		<th>Octave 4</th>
+		<th>Octave 5</th>
+	</tr>
+  </thead>
+
+  <tbody>
+
+	<tr>
+		<td>Root</td>
+		<td><%= number_to_percentage(@root["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@root["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@root["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@root["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@root["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@root["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@root["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Minor 2nd</td>
+		<td><%= number_to_percentage(@minor_2nd["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_2nd["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_2nd["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_2nd["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_2nd["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_2nd["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@minor_2nd["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Major 2nd</td>
+		<td><%= number_to_percentage(@major_2nd["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_2nd["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_2nd["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_2nd["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_2nd["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_2nd["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@major_2nd["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Minor 3rd</td>
+		<td><%= number_to_percentage(@minor_3rd["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_3rd["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_3rd["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_3rd["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_3rd["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_3rd["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@minor_3rd["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Major 3rd</td>
+		<td><%= number_to_percentage(@major_3rd["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_3rd["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_3rd["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_3rd["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_3rd["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_3rd["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@major_3rd["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Perfect 4th</td>
+		<td><%= number_to_percentage(@perfect_4th["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_4th["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_4th["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_4th["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_4th["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_4th["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@perfect_4th["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Augmented 4th</td>
+		<td><%= number_to_percentage(@augmented_4th["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@augmented_4th["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@augmented_4th["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@augmented_4th["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@augmented_4th["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@augmented_4th["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@augmented_4th["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Perfect 5th</td>
+		<td><%= number_to_percentage(@perfect_5th["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_5th["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_5th["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_5th["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_5th["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@perfect_5th["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@perfect_5th["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Minor 6th</td>
+		<td><%= number_to_percentage(@minor_6th["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_6th["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_6th["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_6th["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_6th["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_6th["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@minor_6th["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Major 6th</td>
+		<td><%= number_to_percentage(@major_6th["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_6th["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_6th["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_6th["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_6th["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_6th["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@major_6th["Total average 5"], :precision => 0) %></td>
+	</tr>
+
+	<tr>
+		<td>Minor 7th</td>
+		<td><%= number_to_percentage(@minor_7th["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_7th["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_7th["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_7th["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_7th["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@minor_7th["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@minor_7th["Total average 5"], :precision => 0) %></td>
+	</tr>
+	<tr>
+		<td>Major 7th</td>
+		<td><%= number_to_percentage(@major_7th["Total average"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_7th["Total average 30"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_7th["Total average 1"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_7th["Total average 2"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_7th["Total average 3"], :precision => 0) %></td>
+		<td><%= number_to_percentage(@major_7th["Total average 4"], :precision => 0) %></td
+		<td><%= number_to_percentage(@major_7th["Total average 5"], :precision => 0) %></td>
+	</tr>
+  </tbody>
+</table>
+
 

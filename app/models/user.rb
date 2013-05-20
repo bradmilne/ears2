@@ -111,14 +111,83 @@ class User < ActiveRecord::Base
     end
   end
 
-  def ear_training_stats_hash(interval)
+  def ear_training_stats(interval)
+    #total average
     total_answers = Response.where(:user_id => self.id, :correct_answer => interval).count
-    total_correct = Response.where(:user_id => self.id, :correct_answer => interval, :result => "True").count
-    #results_hash[:total_answers] = total_answers
-    #results_hash[:total_correct] = total_correct
+    total_correct = Response.where(:user_id => self.id, :correct_answer => interval, :result => "true").count
+    if total_answers == 0
+      total_average = 0
+    else
+      total_average = (total_correct.to_f/total_answers)*100
+    end
+    #average in last 30 days
+    total_answers_30 = Response.where(:user_id => self.id, :correct_answer => interval, :created_at => 1.month.ago..Time.now).count
+    total_correct_30 = Response.where(:user_id => self.id, :correct_answer => interval, :result => "true", :created_at => 1.month.ago..Time.now).count
+    if total_answers_30 == 0
+      total_average_30 = 0
+    else
+      total_average_30 = (total_correct_30.to_f/total_answers_30)*100
+    end
+    
+
+
+    #total average octave 1
+    total_answers_1 = Response.where(:user_id => self.id, :correct_answer => interval, :octave => 1).count
+    total_correct_1 = Response.where(:user_id => self.id, :correct_answer => interval, :result => "true", :octave => 1).count
+    if total_answers_1 == 0
+      total_average_1 = 0
+    else
+      total_average_1 = (total_correct_1.to_f/total_answers_1)*100
+    end
+
+    #total average octave 2
+    total_answers_2 = Response.where(:user_id => self.id, :correct_answer => interval, :octave => 2).count
+    total_correct_2 = Response.where(:user_id => self.id, :correct_answer => interval, :result => "true", :octave => 2).count
+    if total_answers_2 == 0
+      total_average_2 = 0
+    else
+      total_average_2 = (total_correct_2.to_f/total_answers_2)*100
+    end
+
+    #total average octave 3
+    total_answers_3 = Response.where(:user_id => self.id, :correct_answer => interval, :octave => 3).count
+    total_correct_3 = Response.where(:user_id => self.id, :correct_answer => interval, :result => "true", :octave => 3).count
+    if total_answers_3 == 0
+      total_average_3 = 0
+    else
+      total_average_3 = (total_correct_3.to_f/total_answers_3)*100
+    end
+
+    #total average octave 4
+    total_answers_4 = Response.where(:user_id => self.id, :correct_answer => interval, :octave => 4).count
+    total_correct_4 = Response.where(:user_id => self.id, :correct_answer => interval, :result => "true", :octave => 4).count
+    if total_answers_4 == 0
+      total_average_4 = 0
+    else
+      total_average_4 = (total_correct_4.to_f/total_answers_4)*100
+    end
+
+    #total average octave 3
+    total_answers_5 = Response.where(:user_id => self.id, :correct_answer => interval, :octave => 5).count
+    total_correct_5 = Response.where(:user_id => self.id, :correct_answer => interval, :result => "true", :octave => 5).count
+    if total_answers_5 == 0
+      total_average_5 = 0
+    else
+      total_average_5 = (total_correct_5.to_f/total_answers_5)*100
+    end
+
+
+
     results_hash = Hash.new
     results_hash = {"Total answer" => total_answers, 
-                    "Total correct" => total_correct
+                    "Total correct" => total_correct, 
+                    "Total average" => total_average,
+                    "Total average 30" => total_average_30,
+                    "Total average 1" => total_average_1,
+                    "Total average 2" => total_average_2,
+                    "Total average 3" => total_average_3,
+                    "Total average 4" => total_average_4,
+                    "Total average 5" => total_average_5
                   }
   end
 end
