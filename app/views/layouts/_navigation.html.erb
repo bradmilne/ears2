@@ -8,22 +8,8 @@
 
 <div class="nav-collapse collapse">
   <ul class="nav pull-right">
+ 
   <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
-    </li>
-  <% else %>
-    <li>
-    <%= link_to 'Login', new_user_session_path %>  
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Stats', "../stats/show" %>
-    </li>
-    <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
     <% if current_user.has_role? :admin %>
       <li>
       <%= link_to 'Users', users_path %>
@@ -32,6 +18,26 @@
       <%= link_to 'Models', admin_dashboard_path %>
       </li>
     <% end %>
+   <li>
+    <%= link_to 'Ear Training', lessons_path %>
+    </li>
+    <% if current_user.roles.first.name == 'gold' %>
+      <li><%= link_to 'Chord Progressions', content_gold_path %></li>
+    <% end %>
+    <li>
+    <%= link_to 'Stats', "../stats/show" %>
+    </li>
+    <li>
+    <%= link_to 'Edit account', edit_user_registration_path %>
+    </li>
+     <li>
+    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
+    </li>
+  <% else %>
+    <li>
+    <%= link_to 'Login', new_user_session_path %>  
+    </li>
   <% end %>
+ 
 </ul>
 </div>
