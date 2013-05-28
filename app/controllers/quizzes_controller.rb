@@ -3,10 +3,16 @@ class QuizzesController < ApplicationController
   def new
   	@user_id = current_user.id
   	@lesson = Lesson.find(params[:lesson_id])
+    questions = Question.where(:lesson_id => params[:lesson_id])
+    @question_answers = Hash.new
+    questions.each do |question|
+      @question_answers["#{question.answer}"] = "#{question.answer}"
+    end
     @question1 = Question.where(:lesson_id => params[:lesson_id]).shuffle[1]
     @question2 = Question.where(:lesson_id => params[:lesson_id]).shuffle[1]
     @question3 = Question.where(:lesson_id => params[:lesson_id]).shuffle[1]
-    @question_answers = [['Root', 'Root'], ['Minor 2nd', 'Minor 2nd'], ['Major 2nd', 'Major 2nd'], ['Minor 3rd', 'Minor 3rd'], ['Major 3rd', 'Major 3rd'], ['Perfect 4th', 'Perfect 4th'], ['Augmented 4th', 'Augmented 4th'],['Perfect 5th', 'Perfect 5th'], ['Minor 6th', 'Minor 6th'], ['Major 6th', 'Major 6th'], ['Minor 7th', 'Minor 7th'], ['Major 7th', 'Major 7th']]
+    @question1_answer = @question1.answer
+  
   end
 
   def create
