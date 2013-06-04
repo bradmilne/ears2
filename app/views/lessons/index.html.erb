@@ -1,8 +1,12 @@
-<p><%= @average_score %> <%= @highest_score %></p>
-<hr>
-<h2>Ear Training Lessons</h2>
-<p>Select any lesson below to start learning.</p>
 
+
+<div class="row">
+<div class="page_title">
+  <h2>Ear Training Lessons</h2>
+  <p>Select any lesson below to start learning.</p>
+</div>
+</div>
+<hr>
 
 <% @lessons_et.each do |lesson| %>
 <div class="lesson_box span4 clearfix">
@@ -10,14 +14,16 @@
   	<h4><%= lesson.title %></h4>
   </div>
   <div class="lesson_box_description">
-    <p>Add a description to each lesson here? The major scale tones are the most important tones are they combine to form a major chord. They consist of the root, major 3rd and major 5th. You'll find them the easiest so let's start here.</p>
+    <p><%= lesson.description %></p>
   </div>
   <div class="lesson_stats">
-  	<p>Your average score is <%= lesson.avg_score %>% and your best is <%= lesson.max_score %>%</p>
+  	<p>Average: <%= lesson.avg_score %>%   ---         Best: <%= lesson.max_score %>%</p>
    </div
 </br>
     <div class="lesson_box_options">
       <%= link_to 'Check out lesson', lesson_path(lesson), {:class => "btn btn-primary"} %> or <%= link_to 'Take quiz', new_lesson_quiz_path(lesson) %>
     </div>
 </div>	
+
+
  <% end %>
