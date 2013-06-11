@@ -192,17 +192,48 @@ class User < ActiveRecord::Base
   end
 
   def chord_progression_stats
-    chords_array = ['I - V', 'I - IV']
+    chords_array = ['I - ii', 'I - iii', 'I - IV', 'I - V', 'I - vi', 'I - vii',
+                    'I - IV - V', 'I - ii - iii', 'I - iii - ii', 'I - vi - V',
+                    'I - vi - IV', 'I - V - IV', 'I - IV - V - I', 'I - IV - V - IV',
+                    'I - IV - I - V', 'I - IV - V - IV', 'I - V - vi - IV', 'I - ii - IV - V',
+                    'I - vi - V - I', 'I - V - IV - I', 'I - ii - V - IV', 'I - ii - IV - I',
+                    'I - vi - ii - V', 'I - vi - IV - V', 'Imaj7 - Imaj7 - V7 - V7', 'Imaj7 - Imaj7 - iimin7 - V7',
+                    'Imaj7 - vimin7 - iimin7 - V7', 'Imaj7 -vi7 - iimin7 - V7', 'Imaj7 - VI7b13 - iimin7 - V7',
+                    'Imaj7 - VI7b13 - II7 - V7', 'Imaj7 - VI7b13 - II7 - bII7', 'Imaj7 - VI7b13 - bVI7 - V7',
+                    'Imaj7 - bIII7 - II7 - V7', 'Imaj7 - bIII7 - II7 - bII7', 'Imaj7 - bII7 - bVI7 - bII7', 'iiimin7 - VI7b13 - iimin7 - V7',
+                    'III7 - VI7b13 - II7 - V7', 'bVII7 - VI7b13 - II7 - V7', 'Imaj7 - Imaj7 - ivm7 - bVII7', 'Imaj7 - I7b9 - ivmin7 - bVII7',
+                    'Imaj7 - bIIImaj7 - bVImaj7 - bIImaj7', 'I7 - VI7 - bV7 - bIII7', 'Imaj7 - IV7 -iiimin7b5 - VI7b9', 
+                    'Imin6 - vi7b5 - ii7b5', 'Imin6 - bIIImaj7 - ii7b5 - V7alt', 'Imin6 - bIIImaj7 -bVI7#11 - V7alt', 'Imin6 - bIII7#11 -bVI7#11 - bII7#11']
     chord_progression_stats_array = Array.new
     counter = 0
     while counter < chords_array.length
       chord_progression = chords_array[counter]
-      questions = Question.where(:answer => chords_array[counter]).count
-      responses = Response.where(:user_id => self.id, :correct_answer => chords_array[counter]).count
-      answers_array = [chord_progression, questions, responses]
+      
+      #total average
+      total_answers = Response.where(:user_id => self.id, :correct_answer => chords_array[counter]).count
+      total_correct = Response.where(:user_id => self.id, :correct_answer => chords_array[counter], :result => "true").count
+      if total_answers == 0
+        total_average = 0
+      else
+        total_average = (total_correct.to_f/total_answers)*100
+      end
+
+      #average in last 30 days
+      total_answers_30 = Response.where(:user_id => self.id, :correct_answer => chords_array[counter], :created_at => 1.month.ago..Time.now).count
+      total_correct_30 = Response.where(:user_id => self.id, :correct_answer => chords_array[counter], :result => "true", :created_at => 1.month.ago..Time.now).count
+      if total_answers_30 == 0
+        total_average_30 = 0
+      else
+        total_average_30 = (total_correct_30.to_f/total_answers_30)*100
+      end
+
+      #total attempts
+      total_attempts = Response.where(:user_id => self.id, :correct_answer => chords_array[counter]).count
+    
+      answers_array = [chord_progression, total_average, total_average_30, total_attempts]
       counter += 1
       chord_progression_stats_array << answers_array
-    end
+      end
     return chord_progression_stats_array
   end
 end

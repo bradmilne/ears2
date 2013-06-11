@@ -151,14 +151,16 @@
   </tbody>
 </table>
 
+<% if current_user.has_role? :gold %>
 <br>
 <h4> Chord Progression Stats </h4>
 <table class="table table-striped">
   <thead>
   	<tr>
   	  <th>Interval</th>
-  	  <th>Questions</th>
-  	  <th>Answers</th>
+  	  <th>Total Average</th>
+  	  <th>Total Average 30 Days</th>
+  	  <th>Total Attempts</th>
   	</tr>
   </thead>
 
@@ -166,9 +168,11 @@
   <% @cp_stats.each do |stat| %>
   <tr>
     <td><%= stat[0] %></td>
-    <td><%= stat[1] %></td>
-    <td><%= stat[2] %></td>
+    <td><%= number_to_percentage(stat[1], :precision => 0) %></td>
+    <td><%= number_to_percentage(stat[2], :precision => 0) %></td>
+    <td><%= stat[3] %></td>
   </tr>
  <% end %>
   </tbody>
 </table>
+<% end %>
