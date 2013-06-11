@@ -14,6 +14,12 @@ class StatsController < ApplicationController
   	@major_6th = @user.ear_training_stats("Major 6th")
   	@minor_7th = @user.ear_training_stats("Minor 7th")
   	@major_7th = @user.ear_training_stats("Major 7th")
+
+    if current_user.has_role? :gold
+      @cp_stats = @user.chord_progression_stats
+    else
+      @test = nil
+    end
   end
 
 end

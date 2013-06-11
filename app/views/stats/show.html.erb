@@ -2,7 +2,6 @@
 <br><br>
 
 
-
 <table class="table table-striped">
   <thead>
 	<tr>
@@ -152,4 +151,24 @@
   </tbody>
 </table>
 
+<br>
+<h4> Chord Progression Stats </h4>
+<table class="table table-striped">
+  <thead>
+  	<tr>
+  	  <th>Interval</th>
+  	  <th>Questions</th>
+  	  <th>Answers</th>
+  	</tr>
+  </thead>
 
+  <tbody>
+  <% @cp_stats.each do |stat| %>
+  <tr>
+    <td><%= stat[0] %></td>
+    <td><%= stat[1] %></td>
+    <td><%= stat[2] %></td>
+  </tr>
+ <% end %>
+  </tbody>
+</table>

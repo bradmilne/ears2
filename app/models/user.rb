@@ -190,4 +190,19 @@ class User < ActiveRecord::Base
                     "Total average 5" => total_average_5
                   }
   end
+
+  def chord_progression_stats
+    chords_array = ['I - V', 'I - IV']
+    chord_progression_stats_array = Array.new
+    counter = 0
+    while counter < chords_array.length
+      chord_progression = chords_array[counter]
+      questions = Question.where(:answer => chords_array[counter]).count
+      responses = Response.where(:user_id => self.id, :correct_answer => chords_array[counter]).count
+      answers_array = [chord_progression, questions, responses]
+      counter += 1
+      chord_progression_stats_array << answers_array
+    end
+    return chord_progression_stats_array
+  end
 end
