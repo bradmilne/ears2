@@ -44,8 +44,7 @@
   </div>
   <hr>
   
-
-  <div class="question question_last">
+   <div class="question">
     <p>Question 3</p>
     <audio controls>
       <source src="<%= @question3.audioclip_mp3.url %>" preload="auto">
@@ -57,8 +56,42 @@
     <%= hidden_field_tag(:octave3, @question3.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
-    <span>Answer 3: <%= select_tag(:user_answer3, options_for_select(@question_answers)) %></span>
+    <span>Answer 2: <%= select_tag(:user_answer3, options_for_select(@question_answers)) %></span>
     Answer: <%= @question3.answer %>
+  </div>
+  <hr>
+
+   <div class="question">
+    <p>Question 4</p>
+    <audio controls>
+      <source src="<%= @question4.audioclip_mp3.url %>" preload="auto">
+      <source src="<%= @question4.audioclip_wav.url %>" preload="auto">
+      Your browser does not support MP3 or WAV files. 
+    </audio>
+    <%= hidden_field_tag :correct_answer4, @question4.answer %>
+    <%= hidden_field_tag :question_id_4, @question4.id %>
+    <%= hidden_field_tag(:octave4, @question4.octave) %>
+    <%= hidden_field_tag(:lesson_id, @lesson.id) %>
+    <%= hidden_field_tag(:user_id, @user_id) %>
+    <span>Answer 2: <%= select_tag(:user_answer4, options_for_select(@question_answers)) %></span>
+    Answer: <%= @question4.answer %>
+  </div>
+  <hr>
+
+  <div class="question question_last">
+    <p>Question 5</p>
+    <audio controls>
+      <source src="<%= @question5.audioclip_mp3.url %>" preload="auto">
+      <source src="<%= @question5.audioclip_wav.url %>" preload="auto">
+      Your browser does not support MP3 or WAV files. 
+    </audio>
+    <%= hidden_field_tag :correct_answer5, @question5.answer %>
+    <%= hidden_field_tag :question_id_5, @question5.id %>
+    <%= hidden_field_tag(:octave5, @question5.octave) %>
+    <%= hidden_field_tag(:lesson_id, @lesson.id) %>
+    <%= hidden_field_tag(:user_id, @user_id) %>
+    <span>Answer 3: <%= select_tag(:user_answer5, options_for_select(@question_answers)) %></span>
+    Answer: <%= @question5.answer %>
   </div>
   
   <br>

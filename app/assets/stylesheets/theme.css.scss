@@ -3,7 +3,7 @@ html {
 }
 body {
 	position: relative;
-	background: #DDDCE2 url(image_path('body_bg.jpg')) repeat left top;
+	background: #fafafa;
 	-webkit-font-smoothing: antialiased;
 	font-family: 'Lato', sans-serif !important;
 	padding-top: 107px;
@@ -57,6 +57,7 @@ header {
 }
 .navbar-inverse .brand {
     color: #fff;
+    font-family: Veneto;
 }
 .navbar-inverse .nav > li > a {
     /*color: rgb(177, 177, 177);*/

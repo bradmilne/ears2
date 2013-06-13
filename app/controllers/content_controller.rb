@@ -19,7 +19,7 @@ class ContentController < ApplicationController
   
   def gold
     authorize! :view, :gold, :message => 'Access limited to Gold Plan subscribers.'
-    @lessons_cp = Lesson.where(:category => "Chord Progressions") 
+    @lessons_cp = Lesson.where(:category => "Chord Progressions").order("id ASC")
      @lessons_cp.each do |lesson|
         if Quiz.where(:user_id => current_user.id, :lesson_id => lesson.id).count < 1
           lesson[:max_score] = 0

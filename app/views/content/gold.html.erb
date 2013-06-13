@@ -3,8 +3,8 @@
 
 <div class="row">
 <div class="page_title">
-  <h2>Chord Progressions</h2>
-  <p>Click any lesson title below to get started</p>
+  <h2 style="font-family: 'Merriweather', serif; font-size: 34px; line-height: 1.25; color: #1a344d;">Chord Progressions</h2>
+  <p style="font-family: 'Merriweather', serif; font-size: 18px; line-height: 1.25; color: #e56b00;">Click any lesson title below to get started</p>
 </div>
 </div>
 <hr>
@@ -13,13 +13,13 @@
 
 <div class="lesson_box span4 clearfix">
   <div class="lesson_box_top">
-    <h4><%= link_to lesson_path(lesson), :remote => true do %><%= lesson.title %><% end %></h4>
+    <h4 style="font-family: 'Merriweather', serif; font-size: 16px; line-height: 1.25; color: #1a344d;"><%= link_to lesson.title, lesson_path(lesson) %></h4>
   </div>
   <div class="lesson_box_description">
-    <p><%= lesson.description %></p>
+    <p style="color: #919FAF; font-family: Helvetica Neue"><%= lesson.description %></p>
   </div>
   <div class="lesson_box_stats">
-    <span class="lesson_stats"<p>Average: <%= lesson.avg_score %>%   ---         Best: <%= lesson.max_score %>%</p></span>
+    <span class="lesson_stats"<p style="color: #919FAF; font-family: Helvetica Neue">Average: <%= lesson.avg_score %>%   ---         Best: <%= lesson.max_score %>%</p></span>
    </div
 </br>
     <div class="lesson_box_options">

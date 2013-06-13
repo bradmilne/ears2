@@ -12,7 +12,7 @@ class LessonsController < ApplicationController
   end
 
   def index
-  	@lessons_et = Lesson.where(:category => "Ear Training") 
+  	@lessons_et = Lesson.where(:category => "Ear Training").order("id ASC")
       @lessons_et.each do |lesson|
         if Quiz.where(:user_id => current_user.id, :lesson_id => lesson.id).count < 1
           lesson[:max_score] = 0
