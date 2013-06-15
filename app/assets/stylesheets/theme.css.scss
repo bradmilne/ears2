@@ -3,7 +3,7 @@ html {
 }
 body {
 	position: relative;
-	background: #fafafa;
+	background: #fff;
 	-webkit-font-smoothing: antialiased;
 	font-family: 'Lato', sans-serif !important;
 	padding-top: 107px;
@@ -27,13 +27,13 @@ body.pull_top {
     padding-top: 0px !important;
 }
 header {
-    background: rgba(0,0,0,.6) !important;
+    background: #3A44A8 !important;
 }
 .navbar.navbar-static-top {
     margin-bottom: 35px;
 }
 .navbar.transparent.navbar-inverse .navbar-inner {
-    background: rgba(0,0,0,0.4);
+    background: #3A44A8;
     border-bottom: 1px solid rgb(88, 88, 88);
 }
 .navbar.transparent.navbar-inverse .navbar-inner .container {
@@ -48,7 +48,7 @@ header {
     background: #252528;    
 }
 .navbar.navbar-inverse .navbar-inner.sticky {
-    background: rgba(0,0,0,0.8);
+    background: #3A44A8;
     border-bottom: 1px solid #252525;
 }
 .navbar-inverse .navbar-inner.sticky .container {

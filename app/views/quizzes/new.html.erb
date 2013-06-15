@@ -1,14 +1,18 @@
 
 <br>
 <br>
-<h1>Ear Training Quiz For: <%= @lesson.title %></h1>
-<p>Select Answers and Submit Quiz</p>
+<div class="quiz_page_title">
+  <h1>Quiz for <%= @lesson.title %></h1>
+  <p style="color: #e56b00;">Select Answers and Submit Quiz</p>
+</div>
 <br>
 
 
 <div class="row">
 <div class="quiz_box span9 offset1">
 <%= form_tag(lesson_quizzes_path, :method => "post") do %>
+
+  <div style="height:30px;"></div>
 
   <div class="question">
     <p>Question 1</p>
@@ -22,8 +26,7 @@
     <%= hidden_field_tag(:octave1, @question1.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @lesson.id) %>
-   <span>Answer 1:  <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
-   Answer: <%= @question1.answer %>
+   <span class="answer_text">Answer: <%= select_tag(:user_answer1, options_for_select(@question_answers)) %></span>
   </div>
   <hr>
 
@@ -39,8 +42,7 @@
     <%= hidden_field_tag(:octave2, @question2.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
-    <span>Answer 2: <%= select_tag(:user_answer2, options_for_select(@question_answers)) %></span>
-    Answer: <%= @question2.answer %>
+    <span class="answer_text">Answer: <%= select_tag(:user_answer2, options_for_select(@question_answers)) %></span>
   </div>
   <hr>
   
@@ -56,8 +58,7 @@
     <%= hidden_field_tag(:octave3, @question3.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
-    <span>Answer 2: <%= select_tag(:user_answer3, options_for_select(@question_answers)) %></span>
-    Answer: <%= @question3.answer %>
+    <span class="answer_text">Answer: <%= select_tag(:user_answer3, options_for_select(@question_answers)) %></span>
   </div>
   <hr>
 
@@ -73,8 +74,7 @@
     <%= hidden_field_tag(:octave4, @question4.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
-    <span>Answer 2: <%= select_tag(:user_answer4, options_for_select(@question_answers)) %></span>
-    Answer: <%= @question4.answer %>
+    <span class="answer_text">Answer: <%= select_tag(:user_answer4, options_for_select(@question_answers)) %></span>
   </div>
   <hr>
 
@@ -90,12 +90,13 @@
     <%= hidden_field_tag(:octave5, @question5.octave) %>
     <%= hidden_field_tag(:lesson_id, @lesson.id) %>
     <%= hidden_field_tag(:user_id, @user_id) %>
-    <span>Answer 3: <%= select_tag(:user_answer5, options_for_select(@question_answers)) %></span>
-    Answer: <%= @question5.answer %>
+    <span class="answer_text">Answer: <%= select_tag(:user_answer5, options_for_select(@question_answers)) %></span>
   </div>
   
   <br>
-  <%= submit_tag("Submit Answers", {:class => "btn btn-primary"}) %>
+  <div width="span3" style="text-align: center;">
+    <%= submit_tag("Submit Answers", {:class => "btn btn-primary"}) %>
+  </div>
 <% end %>
 </div>
 </div>
