@@ -48,23 +48,22 @@
 
 .quiz_results {
 	background: #fff;
-	-webkit-border-top-right-radius: 6px;
-	-moz-border-radius-topright: 6px;
-	border-top-right-radius: 6px;
-	-webkit-border-top-left-radius: 6px;
-	-moz-border-radius-topleft: 6px;
-	border-top-left-radius: 6px;
-	-webkit-border-bottom-right-radius: 6px;
-	-moz-border-radius-bottomright: 6px;
-	border-bottom-right-radius: 6px;
-	-webkit-border-bottom-left-radius: 6px;
-	-moz-border-radius-bottomleft: 6px;
-	border-bottom-left-radius: 6px;
-	border: 1px solid #A8A8A8;
+	margin-top: 15px;
+	margin-bottom: 10px;
 	padding-left: 30px;
 	padding-right: 30px;
-	padding-top: 20px;
-	text-align: middle;
+	padding-bottom: 10px;
+	pdding-top: 40px;
+	text-align: left;
+	border: 1px solid #A8A8A8;
+    display: inline-block;
+	border: 2px solid #FAFAFA;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+	font-family: Merriweather;
 }
 
 .quiz_results_options_header {

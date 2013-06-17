@@ -1,12 +1,20 @@
 
 
 <div class="span8 offset2 quiz_results">
+  
   <div class="quiz_results_options_header">
-  	<h6>Keep practicing and improving and you'll improve your musicianship quickly. What do you want to do next?</h6>
+  	<h4>Congrats! Every practice session matters... what do you want to do next?</h4>
   </div>
+  
   <div class="quiz_results_options_body">
-    links go here...<br>
- 
+    <ul style="padding-top: 10px; padding-left: 15px;">
+      <li><%= link_to 'Check Out Some Ear Training Lessons', lessons_path %></li><br>
+      <% if current_user.roles.first.name == 'gold' %>
+      <li><%= link_to 'Work on Chord Progressions', content_gold_path %></li><br>
+      <% end %>
+      <li><%= link_to 'See Your Stats', "../../../stats/show" %></li>
+    </ul>
+    <br>
   </div>
 
 </div>
