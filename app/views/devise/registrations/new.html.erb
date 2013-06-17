@@ -1,38 +1,90 @@
 <% content_for :head do %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
-<h2>Sign up</h2>
-<div id="stripe_error" class="alert alert-error" style="display:none" >
+
+<div class="container" style="padding-top: 40px; padding-bottom: 20px; text-align: center; font-family: Merriweather;">
+  <h2>The best investment you can make as a musician</h2>
 </div>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical' }) do |f| %>
-  <h3><%= params[:plan].titleize if params[:plan] %> Subscription Plan</h3>
-  <%= hidden_field_tag 'plan', params[:plan] %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %> 
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
-  <% if @user.stripe_token %>
-    <p>Credit card acceptance is pending.</p>
-  <% else %>
-    <div class="field">
-      <%= label_tag :card_number, "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_code, "Card Security Code (CVV)" %>
-      <%= text_field_tag :card_code, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
-    </div>
-    <div class="field">
-      <%= f.input :coupon, :label => 'Promotional Coupon (if any)' %>
-    </div>
+<hr>
+
+<div class="registration_box">
+  <div id="stripe_error" class="alert alert-error" style="display:none" >
+  </div>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical' }) do |f| %>
+    <h3>Payment Information</h3>
+    <%= hidden_field_tag 'plan', params[:plan] %>
+    <%= f.error_notification %>
+    <%= display_base_errors resource %>
+    <%= f.input :name, :autofocus => true %> 
+    <%= f.input :email, :required => true %>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation, :required => true %>
+    <% if @user.stripe_token %>
+      <p>Credit card acceptance is pending.</p>
+    <% else %>
+      <div class="field">
+        <%= label_tag :card_number, "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_code, "Card Security Code (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+      </div>
+      <div class="field">
+        <%= f.input :coupon, :label => 'Promotional Coupon (if any)' %>
+      </div>
+    <% end %>
+    <%= f.hidden_field :stripe_token %>
+    <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
   <% end %>
-  <%= f.hidden_field :stripe_token %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-<% end %>
+</div>
+
+<div class="features_list">
+  <div class="features_list_title">
+    <h4>Your Subscription Includes:</h4>
+    <hr>
+  </div>
+
+  <div class="features_list_checklist">
+    <ul style="padding-top: 10px; padding-left: 15px;">
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Detailed Performance Analytics</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />100+ Ear Training Files In All Octaves</li><br>
+      <% if params[:plan] == 'gold' or 'platinum' %>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />35+ Chord Progressions That You Need To Know</li><br>
+      <% end %>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Fully Mobile Responsive Site</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Downloadable Music Files To Study On the Go</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />100% Money Back Guarantee</li><br>
+      <% if params[:plan] == 'platinum' %>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />ACCESS FOREVER</li><br>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="features_list_title">
+    <h4>The Skills You Will Learn:</h4>
+    <hr>
+  </div>
+
+  <div class="features_list_checklist">
+    <ul style="padding-top: 10px; padding-left: 15px;">
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Play Anything You Hear in Your Head</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Improvise Like a Pro</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Easily Transcribe Songs</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Improved Ability to Compose</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Grasp Music Theory Quickly</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Understand the Relationship Between Notes</li><br>
+      <li style="list-style: none"><img src="/assets/green_checkmark.png" />Be a Better Overall Musician</li><br>
+      
+    </ul>
+  </div>
+
+
+
+
+</div>
