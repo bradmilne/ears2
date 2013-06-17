@@ -1,6 +1,9 @@
 Ears2::Application.routes.draw do
   get "lessons/show"
   get "stats/show"
+  match '/about' => 'home#about', :via => [:get]
+  match '/pricing' => 'home#pricing', :via => [:get]
+  get "home/pricing"
 
 
   ActiveAdmin.routes(self)
