@@ -4,6 +4,7 @@ class Lesson < ActiveRecord::Base
   has_many :questions
   has_many :quizzes
   has_many :responses
+  has_many :lesson_ratings
 
   validates_presence_of :title
 

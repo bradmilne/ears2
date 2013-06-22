@@ -15,11 +15,15 @@ class LessonsController < ApplicationController
   	@lessons_et = Lesson.where(:category => "Ear Training").order("id ASC")
       @lessons_et.each do |lesson|
         if Quiz.where(:user_id => current_user.id, :lesson_id => lesson.id).count < 1
-          lesson[:max_score] = 0
-          lesson[:avg_score] = 0
+          lesson[:rating] = "Not Started Yet"
         else
-          lesson[:max_score] = ((Quiz.where(:user_id => current_user.id, :lesson_id => lesson.id).maximum(:score))/5*100).to_i
-          lesson[:avg_score] = ((Quiz.where(:user_id => current_user.id, :lesson_id => lesson.id).average(:score))/5*100).to_i
+          if LessonRating.where(:user_id => current_user.id, :lesson_id => lesson.id).first
+            lesson_for_rating =  LessonRating.where(:user_id => current_user.id, :lesson_id => lesson.id).first
+            rating = lesson_for_rating.rating
+            lesson[:rating] = rating
+          else
+            lesson[:rating] = "Needs Updating Still"
+          end
         end
       end
     @highest_score = current_user.best_score_per_quiz

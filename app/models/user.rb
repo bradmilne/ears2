@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :quizzes
   has_many :responses
+  has_many :lesson_ratings
 
   def update_plan(role)
     self.role_ids = []
@@ -237,5 +238,61 @@ class User < ActiveRecord::Base
       chord_progression_stats_array << answers_array
       end
     return chord_progression_stats_array
+  end
+
+  # create lesson rating after quiz creation
+  def lesson_rating(lesson_id)
+    number_quizzes = Quiz.where(:user_id => self.id, :lesson_id => lesson_id).count
+    number_quizzes_1 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 1).count
+    number_quizzes_2 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 2).count
+    number_quizzes_3 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 3).count
+    number_quizzes_4 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 4).count
+    number_quizzes_5 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 5).count
+    quiz_score = ((number_quizzes_1 * 1) + (number_quizzes_2 * 2) + (number_quizzes_3 * 3) + (number_quizzes_4 * 4) + (number_quizzes_5 * 5)).to_f
+    quiz_average = quiz_score / number_quizzes
+    if number_quizzes < 5 && quiz_average < 2
+      lesson_rating = "Needs Work"
+    elsif number_quizzes < 5 && quiz_average == 3
+      lesson_rating = "Getting Better"
+    elsif number_quizzes < 5 && quiz_average > 3
+      lesson_rating = "Great progress!"
+    elsif number_quizzes > 5 && number_quizzes < 10 && quiz_average < 3
+      lesson_rating = "Needs Work"
+    elsif number_quizzes > 5 && number_quizzes < 10 && quiz_average > 0 && quiz_average < 2
+      lesson_rating = "Needs Improvement!"
+    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 1 && quiz_average < 2
+      lesson_rating = "Below Average"
+    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 2 && quiz_average < 3
+      lesson_rating = "Average. Keep Going!"
+    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 3 && quiz_average < 4
+      lesson_rating = "Great!"
+    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 4 && quiz_average < 5
+      lesson_rating = "Amazing!"
+    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 0 && quiz_average < 2
+      lesson_rating = "Still Needs Work!"
+    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 2 && quiz_average < 3
+      lesson_rating = "Pretty Good!"
+    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 3 && quiz_average < 4
+      lesson_rating = "Nice! Keep Going!"
+    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 4 && quiz_average < 5
+      lesson_rating = "Incredible!"
+    elsif number_quizzes > 30 && quiz_average > 0 && quiz_average < 2
+      lesson_rating = "Keep Trying!"
+    elsif number_quizzes > 30 && quiz_average > 2 && quiz_average < 3
+      lesson_rating = "Not Bad..."
+    elsif number_quizzes > 30 && quiz_average > 3 && quiz_average < 4
+      lesson_rating = "Solid Work!"
+    elsif number_quizzes > 30 && quiz_average > 4 && quiz_average < 4.5
+      lesson_rating = "Incredible!"
+    elsif number_quizzes > 30 && quiz_average > 4.5
+      lesson_rating = "Epic!"
+    else
+      lesson_rating = "Nothing Yet"
+    end
+    
+  
+    lesson_rating_to_be_rated = LessonRating.find_or_initialize_by_user_id_and_lesson_id(:user_id => self.id, :lesson_id => lesson_id)
+    lesson_rating_to_be_rated = lesson_rating_to_be_rated.update_attributes(:rating => lesson_rating)
+
   end
 end
