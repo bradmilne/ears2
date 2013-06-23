@@ -6,7 +6,7 @@
 
 .lesson_box {
 	background: #fff;
-	height: 300px;
+	height: 350px;
 	margin-top: 15px;
 	margin-bottom: 10px;
 	padding-left: 15px;
@@ -70,17 +70,25 @@
 .button_to { display:inline-block;}
 
 .lesson_box_stats {
-	height: 30px;
-	line-height: 30px;
+	height: 70px;
+	line-height: 100px;
 	text-align: center;
 	vertical-align: middle;
 	text-align: center;
 	margin-bottom: 30px;	
+	color: #9fff99;
 }
 
 .lesson_box_stats {
 	font-height: 30px;
+	line-height: 80px;
 }
+
+.big_lesson_stats {
+	font-size: 64px;
+	padding-top: 25px;
+}
+
 
 
 
