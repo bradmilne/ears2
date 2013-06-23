@@ -4,6 +4,8 @@ class Question < ActiveRecord::Base
   belongs_to :lesson
   has_many :responses
 
+  has_many :question_ratings
+
   has_attached_file :audioclip_mp3
   has_attached_file :audioclip_wav
 end

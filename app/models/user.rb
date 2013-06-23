@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :quizzes
   has_many :responses
   has_many :lesson_ratings
+  has_many :question_ratings
 
   def update_plan(role)
     self.role_ids = []
@@ -252,25 +253,25 @@ class User < ActiveRecord::Base
     quiz_average = quiz_score / (number_quizzes * 5)
     if quiz_average < 0.62
       lesson_rating = "D"
-    elsif quiz_average <= 0.62 && quiz_average < 0.65
+    elsif quiz_average >= 0.62 && quiz_average < 0.65
       lesson_rating = "C-"
-    elsif quiz_average <= 0.65 && quiz_average < 0.68
+    elsif quiz_average >= 0.65 && quiz_average < 0.68
       lesson_rating = "C"
-    elsif quiz_average <= 0.68 && quiz_average < 0.72
+    elsif quiz_average >= 0.68 && quiz_average < 0.72
       lesson_rating = "C+"
-    elsif quiz_average <= 0.72 && quiz_average < 0.75
+    elsif quiz_average >= 0.72 && quiz_average < 0.75
       lesson_rating = "B-"
-    elsif quiz_average <= 0.75 && quiz_average < 0.78
+    elsif quiz_average >= 0.75 && quiz_average < 0.78
       lesson_rating = "B"
-    elsif quiz_average <= 0.78 && quiz_average < 0.83
+    elsif quiz_average >= 0.78 && quiz_average < 0.83
       lesson_rating = "B+"
     elsif number_quizzes < 5 && quiz_average > 0.78 
       lesson_rating = "B+"
-    elsif quiz_average <= 0.83 && quiz_average < 0.89
+    elsif quiz_average >= 0.83 && quiz_average < 0.89
       lesson_rating = "A-"
-    elsif quiz_average <= 0.89 && quiz_average < 0.95
+    elsif quiz_average >= 0.89 && quiz_average < 0.95
       lesson_rating = "A"
-    elsif quiz_average <= 0.68 && quiz_average < 0.72
+    elsif quiz_average >= 0.95
       lesson_rating = "A+"
     else
       lesson_rating = "Nothing Yet"
@@ -279,6 +280,42 @@ class User < ActiveRecord::Base
   
     lesson_rating_to_be_rated = LessonRating.find_or_initialize_by_user_id_and_lesson_id(:user_id => self.id, :lesson_id => lesson_id)
     lesson_rating_to_be_rated = lesson_rating_to_be_rated.update_attributes(:rating => lesson_rating)
+  end
+
+  # create lesson rating after quiz creation
+  def question_rating(answer, octave, question_id)
+    number_attempts = Response.where(:user_id => self.id, :correct_answer => answer, :octave => octave).count
+    number_correct = Response.where(:user_id => self.id, :correct_answer => answer, :octave => octave, :result => "true").count
+    percentage_correct = number_correct.to_f / number_attempts
+  
+    if percentage_correct < 0.62
+      question_rating = "D"
+    elsif percentage_correct >= 0.62 && percentage_correct < 0.65
+      question_rating = "C-"
+    elsif percentage_correct >= 0.65 && percentage_correct < 0.68
+      question_rating = "C"
+    elsif percentage_correct >= 0.68 && percentage_correct < 0.72
+      question_rating = "C+"
+    elsif percentage_correct >= 0.72 && percentage_correct < 0.75
+      question_rating = "B-"
+    elsif percentage_correct >= 0.75 && percentage_correct < 0.78
+      question_rating = "B"
+    elsif percentage_correct >= 0.78 && percentage_correct < 0.83
+      question_rating = "B+"
+    elsif number_attempts < 5 && percentage_correct > 0.78 
+      question_rating = "B+"
+    elsif percentage_correct >= 0.83 && percentage_correct < 0.89
+      question_rating = "A-"
+    elsif percentage_correct >= 0.89 && percentage_correct < 0.95
+      question_rating = "A"
+    elsif percentage_correct >= 0.95
+      question_rating = "A+"
+    else
+      question_rating = "TBD"
+    end
+    
+    question_rating_to_be_rated = QuestionRating.find_or_initialize_by_user_id_and_question_id(:user_id => self.id, :question_id => question_id)
+    question_rating_to_be_rated = question_rating_to_be_rated.update_attributes(:rating => question_rating)
 
   end
 end

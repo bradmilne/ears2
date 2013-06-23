@@ -26,67 +26,33 @@ class QuizzesController < ApplicationController
     @question5_score = params[:user_answer5] == params[:correct_answer5] ? 1 : 0
     @score = @question1_score + @question2_score + @question3_score + @question4_score + @question5_score
     @lesson_id = params[:lesson_id]
+    
+    @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
+    Response.create!(:question_id => params[:question_id_1],:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
+    current_user.question_rating(params[:user_answer1], params[:octave1], params[:question_id_1])
+    Response.create!(:question_id => params[:question_id_2],:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
+    current_user.question_rating(params[:user_answer2], params[:octave2], params[:question_id_2])
+    Response.create!(:question_id => params[:question_id_3],:user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
+    current_user.question_rating(params[:user_answer3], params[:octave3], params[:question_id_3])
+    Response.create!(:question_id => params[:question_id_4],:user_answer => params[:user_answer4], :correct_answer => params[:correct_answer4], :lesson_id => params[:lesson_id], :octave => params[:octave4], :user_id => params[:user_id])
+    current_user.question_rating(params[:user_answer4], params[:octave4], params[:question_id_4])
+    Response.create!(:question_id => params[:question_id_5],:user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id])
+    current_user.question_rating(params[:user_answer5], params[:octave5], params[:question_id_5])
+    current_user.lesson_rating(params[:lesson_id])
     if @score == 5
-      flash[:notice] = "Great work! You got #{@score} out of 5 on that one!"
-      @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_1],:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_2],:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_3],:user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_4],:user_answer => params[:user_answer4], :correct_answer => params[:correct_answer4], :lesson_id => params[:lesson_id], :octave => params[:octave4], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_5],:user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id])
-      current_user.lesson_rating(params[:lesson_id])
-      render 'show' 
+      flash[:notice] = "Perfect! You got #{@score} out of 5 on that one!"
     elsif @score == 4
-      flash[:notice] = "Great work! You got #{@score} out of 5 on that one!"
-      @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_1],:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_2],:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_3],:user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_4],:user_answer => params[:user_answer4], :correct_answer => params[:correct_answer4], :lesson_id => params[:lesson_id], :octave => params[:octave4], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_5],:user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id])
-      current_user.lesson_rating(params[:lesson_id])
-      render 'show'
+      flash[:notice] = "Excellent! You got #{@score} out of 5 on that one!"
     elsif @score == 3 
       flash[:notice] = "Great work! You got #{@score} out of 5 on that one!"
-      @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_1],:user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_2],:user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_3],:user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_4],:user_answer => params[:user_answer4], :correct_answer => params[:correct_answer4], :lesson_id => params[:lesson_id], :octave => params[:octave4], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_5],:user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id]) 
-      current_user.lesson_rating(params[:lesson_id])
-      render 'show'
     elsif @score == 2
       flash[:notice] = "Not bad! You got #{@score} out of 5 one that one!"
-      @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_1], :user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_2], :user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_3], :user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_4], :user_answer => params[:user_answer4], :correct_answer => params[:correct_answer4], :lesson_id => params[:lesson_id], :octave => params[:octave4], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_5], :user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id]) 
-      current_user.lesson_rating(params[:lesson_id])
-      render 'show'    
     elsif @score == 1
       flash[:notice] = "Hmmm.. you might need some more practice. You got #{@score} out of 5 on that one."
-      @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_1], :user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_2], :user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_3], :user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_4], :user_answer => params[:user_answer4], :correct_answer => params[:correct_answer4], :lesson_id => params[:lesson_id], :octave => params[:octave4], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_5], :user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id])
-      current_user.lesson_rating(params[:lesson_id])
-      render 'show'
     else
       flash[:notice] = "Keep at it and you'll start to get it! You got #{@score} out of 5 on that one."
-      @quiz = Quiz.create!(:score => @score, :lesson_id => params[:lesson_id], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_1], :user_answer => params[:user_answer1], :correct_answer => params[:correct_answer1], :lesson_id => params[:lesson_id], :octave => params[:octave1], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_2], :user_answer => params[:user_answer2], :correct_answer => params[:correct_answer2], :lesson_id => params[:lesson_id], :octave => params[:octave2], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_3], :user_answer => params[:user_answer3], :correct_answer => params[:correct_answer3], :lesson_id => params[:lesson_id], :octave => params[:octave3], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_4], :user_answer => params[:user_answer4], :correct_answer => params[:correct_answer4], :lesson_id => params[:lesson_id], :octave => params[:octave4], :user_id => params[:user_id])
-      Response.create!(:question_id => params[:question_id_5], :user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id])
-      current_user.lesson_rating(params[:lesson_id])
-      render 'show'
     end
+    render 'show' 
   end
 
   def show
