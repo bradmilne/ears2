@@ -249,43 +249,29 @@ class User < ActiveRecord::Base
     number_quizzes_4 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 4).count
     number_quizzes_5 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 5).count
     quiz_score = ((number_quizzes_1 * 1) + (number_quizzes_2 * 2) + (number_quizzes_3 * 3) + (number_quizzes_4 * 4) + (number_quizzes_5 * 5)).to_f
-    quiz_average = quiz_score / number_quizzes
-    if number_quizzes < 5 && quiz_average < 2
-      lesson_rating = "Needs Work"
-    elsif number_quizzes < 5 && quiz_average == 3
-      lesson_rating = "Getting Better"
-    elsif number_quizzes < 5 && quiz_average > 3
-      lesson_rating = "Great progress!"
-    elsif number_quizzes > 5 && number_quizzes < 10 && quiz_average < 3
-      lesson_rating = "Needs Work"
-    elsif number_quizzes > 5 && number_quizzes < 10 && quiz_average > 0 && quiz_average < 2
-      lesson_rating = "Needs Improvement!"
-    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 1 && quiz_average < 2
-      lesson_rating = "Below Average"
-    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 2 && quiz_average < 3
-      lesson_rating = "Average. Keep Going!"
-    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 3 && quiz_average < 4
-      lesson_rating = "Great!"
-    elsif number_quizzes > 10 && number_quizzes < 20 && quiz_average > 4 && quiz_average < 5
-      lesson_rating = "Amazing!"
-    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 0 && quiz_average < 2
-      lesson_rating = "Still Needs Work!"
-    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 2 && quiz_average < 3
-      lesson_rating = "Pretty Good!"
-    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 3 && quiz_average < 4
-      lesson_rating = "Nice! Keep Going!"
-    elsif number_quizzes > 20 && number_quizzes < 30 && quiz_average > 4 && quiz_average < 5
-      lesson_rating = "Incredible!"
-    elsif number_quizzes > 30 && quiz_average > 0 && quiz_average < 2
-      lesson_rating = "Keep Trying!"
-    elsif number_quizzes > 30 && quiz_average > 2 && quiz_average < 3
-      lesson_rating = "Not Bad..."
-    elsif number_quizzes > 30 && quiz_average > 3 && quiz_average < 4
-      lesson_rating = "Solid Work!"
-    elsif number_quizzes > 30 && quiz_average > 4 && quiz_average < 4.5
-      lesson_rating = "Incredible!"
-    elsif number_quizzes > 30 && quiz_average > 4.5
-      lesson_rating = "Epic!"
+    quiz_average = quiz_score / (number_quizzes * 5)
+    if quiz_average < 0.62
+      lesson_rating = "D"
+    elsif quiz_average <= 0.62 && quiz_average < 0.65
+      lesson_rating = "C-"
+    elsif quiz_average <= 0.65 && quiz_average < 0.68
+      lesson_rating = "C"
+    elsif quiz_average <= 0.68 && quiz_average < 0.72
+      lesson_rating = "C+"
+    elsif quiz_average <= 0.72 && quiz_average < 0.75
+      lesson_rating = "B-"
+    elsif quiz_average <= 0.75 && quiz_average < 0.78
+      lesson_rating = "B"
+    elsif quiz_average <= 0.78 && quiz_average < 0.83
+      lesson_rating = "B+"
+    elsif number_quizzes < 5 && quiz_average > 0.78 
+      lesson_rating = "B+"
+    elsif quiz_average <= 0.83 && quiz_average < 0.89
+      lesson_rating = "A-"
+    elsif quiz_average <= 0.89 && quiz_average < 0.95
+      lesson_rating = "A"
+    elsif quiz_average <= 0.68 && quiz_average < 0.72
+      lesson_rating = "A+"
     else
       lesson_rating = "Nothing Yet"
     end
