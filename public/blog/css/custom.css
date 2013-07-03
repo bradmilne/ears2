@@ -1,0 +1,56 @@
+.blog-nav {
+	padding-top: 10px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.blog-nav-links {
+  list-style: none;
+}
+
+.blog-nav-links li {
+	display: inline;
+	padding-left:10px;
+}
+
+.blog-title {
+    padding-top: 60px;
+}
+
+.blog-title h1 {
+    font-family: 'Marck Script', cursive; 
+    font-size: 62px; 
+    line-height: 1.2;
+}
+
+.blog-list {
+	min-height: 500px;
+}
+
+.footer {
+	background: #F2F2F2;
+	min-height: 300px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding-top: 15px;
+}
+
+.footer p {
+
+	color: #fff;
+}
+
+.blog-post-index {
+    background-image:url('blog/images/grid.png');
+
+}
+
+.blog-post-index h6 {
+   padding-bottom: -15px;
+}
+
+.blog-post-index span {
+	font-size: 11px;
+	color: #777;
+}
