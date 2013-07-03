@@ -1,0 +1,17 @@
+---
+layout: default
+title: Ear Training Blog
+---
+
+<div class="container" style="text-align: center;">
+  <h1 style="font-family: 'Marck Script', cursive; font-size: 62px; line-height: 1.2;">Use Your Ears: A Blog About Musicianship</h1>
+  <hr>
+
+ <ul style="list-style-type: none;">
+    {% for post in site.posts limit 10 %}
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}/blog{{ post.url }}">{{ post.title }}</a></li>
+        {{ post.content | strip_html | truncatewords:75}}<br>
+            <a href="{{ post.url }}">Read more...</a><br><br>
+    {% endfor %}
+</ul>
+</div>

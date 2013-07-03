@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>BLOG_NAME</title>
+ <link href="YOUR_URL/atom.xml" rel="self"/>
+ <link href="YOUR_URL"/>
+ <updated>2013-07-03T14:32:26-04:00</updated>
+ <id>BLOG_URL</id>
+ <author>
+   <name>BLOG_NAME</name>
+ </author>
+
+ 
+ <entry>
+   <title>The Importance of Ear Training</title>
+   <link href="YOUR_URL/the-importance-of-ear-training.html"/>
+   <updated>2013-07-03T00:00:00-04:00</updated>
+   <id>BLOG_URL/the-importance-of-ear-training</id>
+   <content type="html">&lt;p&gt;hi there - buy my stuff please hi there - buy my stuff please hi there - buy my stuff please hi there - buy my stuff please hi there - buy my stuff please hi there - buy my stuff please hi there - buy my stuff please hi there - buy my stuff please&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>
