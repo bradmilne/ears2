@@ -1,3 +1,7 @@
+.nav-background {
+	background: #F2F2F2;
+}
+
 .blog-nav {
 	padding-top: 10px;
 	padding-left: 25px;
@@ -43,6 +47,7 @@
 
 .blog-post-index {
     background-image:url('blog/images/grid.png');
+    text-align: center;
 
 }
 
