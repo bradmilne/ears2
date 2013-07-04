@@ -1,15 +1,31 @@
 ---
 layout: default
 ---
-<div id="post">
-{{ content }}
+<div class="container">
+  
+  <div class="post-title">
+	<h1>{{ page.title }}<h1>
+  </div>
+  <hr>
+
+  <div class="post-content">
+	<p>{{ page.content }}</p>
+  </div>
+
 </div>
 
-<div id="related">
-  <h2>Related Posts</h2>
-  <ul class="posts">
-    {% for post in site.related_posts limit:3 %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="/blog{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+<hr>
+
+<div class="container">
+  <div class="related-posts">
+    <h6>Some Other Posts You Might Like</h6>
+    <!-- MAILCHIMP SUBSCRIBE LINK -->
+    <p><a href="http://eepurl.com/BVQCD">Like these posts? Subscribe to this blog!</a><p>
+    <hr>
+    <ul class="related-posts">
+      {% for post in site.related_posts limit:3 %}
+        <li><a href="/blog{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
