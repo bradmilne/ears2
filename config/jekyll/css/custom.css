@@ -68,7 +68,7 @@
 	font-family: 'Marck Script', cursive; 
     font-size: 44px; 
     line-height: 1.2;
-    text-align: left;
+    text-align: center;
 }
 
 .post-content {
@@ -102,4 +102,18 @@
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
+}
+
+.related-posts {
+	text-align: center;
+}
+
+.related-posts h6 {
+	font-family: 'Marck Script', cursive; 
+    font-size: 30px; 
+    line-height: 1.2;
+}
+
+.related-posts ul {
+	list-style: none;
 }
