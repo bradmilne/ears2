@@ -244,6 +244,8 @@ class User < ActiveRecord::Base
   # create lesson rating after quiz creation
   def lesson_rating(lesson_id)
     number_quizzes = Quiz.where(:user_id => self.id, :lesson_id => lesson_id).count
+    lesson_title = Lesson.where(:id => lesson_id).first
+    lesson_title = lesson_title.title
     number_quizzes_1 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 1).count
     number_quizzes_2 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 2).count
     number_quizzes_3 = Quiz.where(:user_id => self.id, :lesson_id => lesson_id, :score => 3).count
@@ -279,7 +281,14 @@ class User < ActiveRecord::Base
     
   
     lesson_rating_to_be_rated = LessonRating.find_or_initialize_by_user_id_and_lesson_id(:user_id => self.id, :lesson_id => lesson_id)
-    lesson_rating_to_be_rated = lesson_rating_to_be_rated.update_attributes(:rating => lesson_rating)
+    if lesson_rating_to_be_rated.rating == lesson_rating
+      lesson_rating_to_be_rated = lesson_rating_to_be_rated.update_attributes(:rating => lesson_rating)
+    else
+      previous_lesson_rating = lesson_rating_to_be_rated.rating
+      new_lesson_rating = lesson_rating
+      UserMailer.lesson_update_email(self, lesson_title, previous_lesson_rating, new_lesson_rating).deliver
+      lesson_rating_to_be_rated = lesson_rating_to_be_rated.update_attributes(:rating => lesson_rating)
+    end
   end
 
   # create lesson rating after quiz creation
