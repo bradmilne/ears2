@@ -1,15 +1,341 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-  </head>
-  <body>
-    <h1>You've changed your grade for <%= @lesson_title %></h1>
-    <p>
-      Your grade was just changed to <%= @new_lesson_rating %> from <%= @previous_lesson_rating %>
-    </p>
-    <p>
-      Remember: every time you practice matters. The best in the world got that way because of hard work.
-    </p>
-  </body>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<title>Ear Training</title>
+
+<!-- Hotmail ignores some valid styling, so we have to add this -->
+<style type="text/css">
+.ReadMsgBody
+{width: 100%; background-color: #ffffff;}
+.ExternalClass
+{width: 100%; background-color: #ffffff;}
+body
+{width: 100%; background-color: #ffffff; margin:0; padding:0; -webkit-font-smoothing: antialiased;}
+html
+{width: 100%; }
+
+
+.tableHeaderScale img           {width: 580px!important; height: 290px!important; border-radius: 4px!important;}
+.tableSmallImages img         {width: 170px!important; height: 109px!important; border-radius: 4px!important;}
+.NoPadding img              {width: 267px!important; height: 141px!important; border-radius: 4px!important;}
+.tableImagesScale img         {width: 267px!important; height: 141px!important; border-radius: 4px!important;}
+
+@media only screen and (max-width: 640px) 
+       {
+    body{width:auto!important;}
+    
+    
+    table table                   {width:440px!important; }
+    .fullWidth            {width: 100%!important;}
+    .mobileCenter         {width: 440px !important; text-align: center!important; }
+    .headerScale          {width: 440px!important; height: 220px!important; }
+    .tableHeaderScale img     {width: 440px!important; height: 220px!important; }
+    .eraseForMobile         {width:0; display:none !important;}
+    .navPad             {padding-right: 35px!important; padding-left: 35px; }
+    .headerBG           {width: 100%!important; height: 140px!important; background-image: url(images/header_bg.jpg); background-size: 100% 245px; background-repeat: repeat-x;}
+    .headlineFont         {font-size: 16px!important; }
+    .headlinePad          {height: 14px!important; }
+    .textPad            {height: 6px!important; }
+    .smallImageScale        {width: 440px!important; height: 282px!important; }
+    .tableSmallImages img     {width: 440px!important; height: 282px!important; }
+    .textLineHeight         {line-height: 22px!important;}
+    .imageScale1          {width: 440px!important; height: 232px!important; }
+    .imageScale2          {width: 440px!important; height: 232px!important; margin-top: 10px!important; }
+    .tableImagesScale img     {width: 440px!important; height: 232px!important; margin-top: 10px!important; }
+    .NoPadding            {padding: 0px!important; }
+    .NoPadding img          {width: 440px!important; height: 232px!important; }
+    .image2PadMobile        {padding-top: 30px!important;}
+    .scaledown            {width: 361px!important; padding-left: 10px!important;  }
+    .scaleDownPlusIcon        {width: 14px!important;  }
+    .mobilePad            {height: 45px!important; }
+    .mobilePad3           {height: 30px!important; }
+    .mobilePad2           {height: 0px!important; }
+    .mobilePad4           {height:10px!important; }
+    .mobilePad5           {height:20px!important; }   
+    .addForMobile           { height: 15px; }
+    table[class=table200]     {width:146px !important; text-align: center!important;}
+    table[class=tablefull]      {width:100% !important; padding-top: 25px;}
+    .roundCounter         {width: 58px!important; height: 58px!important; text-align: center; }
+    .roundCornerHeadline      {padding-top: 10px!important; padding-left: 0px!important; text-align: center!important;}
+    .fontFooter           {font-size: 13px!important; text-align: center!important; line-height: 22px!important;}
+    .footerCenter         {text-align: center!important; padding-bottom: 5px!important; }
+    .ExtraPadForMobile        {width: 191px; background-color: #f7f7f7; }
+    .footerLogoPad          {text-align: center!important; padding-top: 20px!important;}
+    .footerScale          {width: 146px!important;}
+    .alignLeft            {text-align: center!important; line-height: 24px!important; }
+    
+    }
+    
+
+
+@media only screen and (max-width: 479px) 
+       {
+    body{width:auto!important;}
+    
+    table table           {width: 280px!important; }
+    .fullWidth            {width: 100%!important;}
+    .mobileCenter         {width:280px !important; text-align: center!important; }
+    .headerScale          {width: 280px!important; height: 140px!important; }
+    .tableHeaderScale img     {width: 280px!important; height: 140px!important; }
+    .eraseForMobile         {width:0; display:none !important;}
+    .navPad             {padding-right: 15px!important; padding-left: 15px; }
+    .headerBG             {width: 100%!important; height: 120px!important; background-color: #ffffff; background-image: url(images/header_bg.jpg); background-size: 100% 160px; background-repeat: repeat-x;}
+    .headlineFont         {font-size: 16px!important; }
+    .headlinePad          {height: 14px!important; }
+    .textPad            {height: 6px!important; }
+    .addForMobile           { height: 15px; }
+    .textLineHeight         {line-height: 22px!important;}
+    .smallImageScale        {width: 280px!important; height: 179px!important;}
+    .tableSmallImages img     {width: 280px!important; height: 179px!important; }
+    .imageScale1          {width: 280px!important; height: 148px!important; }
+    .imageScale2          {width: 280px!important; height: 148px!important;  margin-top: 15px!important;}
+    .tableImagesScale img     {width: 280px!important; height: 148px!important;  margin-top: 15px!important;}
+    .NoPadding            {padding: 0px!important; }
+    .NoPadding img          {width: 280px!important; height: 148px!important; }       
+    .image2PadMobile        {padding-top: 15px!important;}
+    .scaledown            {width: 211px!important; padding-left: 10px!important;  }
+    .scaleDownPlusIcon        {width: 14px!important;  }
+    .mobilePad            {height: 40px!important; }
+    .mobilePad2           {height: 10px!important; }
+    .mobilePad3           {height: 30px!important; }
+    .mobilePad4           {height: 20px!important; }
+    .mobilePad5           {height:15px!important; }
+    
+    table[class=table200]     {width:93px !important; text-align: center!important;}
+    table[class=tablefull]      {width:100% !important; padding-top: 25px!important; }
+    
+    .fontFooter           {font-size: 12px!important; text-align: center!important; line-height: 22px!important;}
+    .footerLogoPad          {text-align: center!important; padding-top: 20px!important;}
+    
+    .headlineFont3          {text-align: center!important; width: 58px!important;}
+    .ExtraPadForMobile        {width: 111px; background-color: #f7f7f7; }
+    .footerScale          {width: 92px!important;}
+    .alignLeft            {text-align: center!important; line-height: 24px!important; }
+    
+    }
+
+
+
+</style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<!-- Wrapper -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+    <td width="100%" valign="top" bgcolor="#ffffff">
+    
+      <!-- Nav Mobile Wrapper -->
+      <table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td width="100%" bgcolor="ffffff">
+          
+            <!-- Start Nav -->
+            <table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+              <tr>
+                <td width="580">
+                  
+                  <!-- Logo -->
+                  <table border="0" cellpadding="0" cellspacing="0" align="left" class="mobileCenter">
+                    <tr>
+                      <td height="12"></td>
+                    </tr>
+                    <tr>
+                      <td height="50" class="mobileCenter" style="font-size: 20px; color: #272727; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 20px;">
+                       Ear Training Update
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12" class="eraseForMobile"></td>
+                    </tr>
+                  </table>
+                 
+                  <!-- Nav -->
+                  <table border="0" cellpadding="0" cellspacing="0" align="right">
+                    <tr>
+                      <td height="12" class="eraseForMobile"></td>
+                    </tr>
+                    <tr>
+                      <td mc:edit="nav" height="50" class="mobileCenter" style="font-size: 13px; color: #272727; font-weight: light; text-align: right; font-family: Helvetica, Arial, sans-serif; line-height: 20px; vertical-align: middle;">
+                        <a href="#" class="navPad" style="text-decoration: none; color: #3b3b3b;">Website.</a>
+                        <span class="eraseForMobile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a href="#" class="navPad" style="text-decoration: none; color: #3b3b3b;">Blog.</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12"></td>
+                    </tr>
+                  </table>
+                                  
+                </td>
+              </tr>
+            </table><!-- End Nav -->
+            
+          </td>
+        </tr>
+      </table><!-- End Nav Mobile Wrapper -->
+       <hr>
+      
+      <!-- Header Mobile Wrapper -->
+      <table class="fullWidth" width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+        </tr>
+      </table><!-- End Header Mobile Wrapper -->
+      
+      
+      <!-- Header Mobile Wrapper -->
+      <table class="fullWidth" width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td width="100%" height="400px" valign="top">
+          
+            <table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+              <tr>
+                <td class="headlinePad" height="14"></td>
+              </tr>
+              <tr>
+                <td mc:edit="headerHeadline" class="headlineFont" style="font-size: 18px; color: #272727; font-weight: bold; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top;">
+                  <a href="#" style="text-decoration: none; color: #272727">Congrats!</a>             
+                </td>
+              </tr>
+              <tr>
+                <td class="textPad" height="8"></td>
+              </tr>
+              <tr>
+                <td mc:edit="headerText" style="font-size: 18px; color: #959595; font-weight: normal; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top;" class="textLineHeight">
+                     Lesson Worked On: <%= @lesson_title %> 
+          
+                </td>
+              </tr>
+                
+                <tr>
+                <td mc:edit="headerText" style="font-size: 18px; color: #959595; font-weight: normal; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top;" class="textLineHeight">
+                     New Grade:  <%= @new_lesson_rating %>
+          
+                </td>
+                 </tr>
+
+               <tr>
+                <td mc:edit="headerText" style="padding-top:30px; font-size: 16px; color: #000; font-weight: normal; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top;" class="textLineHeight">
+                     Just remember that it takes work and diligent practice to get good at something. Keep working and you'll see improvement. The recipe is simple.
+          
+                </td>
+              </tr>
+            </table>
+
+            
+          </td>
+        </tr>
+      </table><!-- End Header Mobile Wrapper -->
+      
+
+       <!-- Header Mobile Wrapper -->
+      <table class="fullWidth" width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+        </tr>
+      </table><!-- End Header Mobile Wrapper -->
+      
+     
+      
+      
+      <!-- Start 4 Columns -->
+      <table width="100%" class="fullWidth" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td width="100%" bgcolor="#fafafa">
+          
+            <table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+              <tr>
+                <td height="30">                  
+                </td>
+              </tr>
+            </table>
+
+      
+            <!-- Mobile Wrapper -->
+            <table align="center" width="580" cellpadding="0" cellspacing="0" bgcolor="#fafafa" border="0">
+              <tr>
+                <td valign="top" bgcolor="#fafafa">
+                
+                  <!-- Start Footer -->
+                  <table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+                    <tr>
+                      <td width="580">
+                        
+                        
+                        
+                        <!-- Footer -->
+                        <table border="0" cellpadding="0" cellspacing="0" align="left">
+                          <tr>
+                            <td class="mobileCenter" style="font-size: 13px; color: #f1f1f1; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top;">
+                              <!-- 1st Column -->
+                              <table width="150" border="0" cellpadding="0" cellspacing="0" align="left" class="footerScale">
+                                <tr>
+                                
+                                </tr>
+                              </table>
+                              
+                              <!-- 2nd Column -->
+                              <table width="150" border="0" cellpadding="0" cellspacing="0" align="left" class="footerScale">
+                                <tr>
+                                
+                                </tr>
+                              </table>
+                              
+                              <!-- 3th Column -->
+                              <table width="150" border="0" cellpadding="0" cellspacing="0" align="left" class="footerScale">
+                                <tr>
+                                
+                                </tr>
+                              </table>
+                              
+                            </td>
+                          </tr>
+                        </table>
+                        
+                        <!-- Footer Logo + Icons -->    
+                        <table width="130" cellpadding="0" cellspacing="0" bgcolor="#fafafa" border="0" class="tablefull" align="center" >
+                          <tr>
+                            
+                          </tr>
+                          <tr>
+                            <td height="10" valign="top"></td>
+                          </tr>
+                          <tr>
+                            
+                          </tr>
+                        </table>
+                                        
+                      </td>
+                    </tr>
+                  </table><!-- End Footer -->
+                        
+                  
+                </td>
+              </tr>
+            </table><!-- End Mobile Wrapper -->
+            
+            <!-- Space -->
+            <table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+              <tr>
+                <td height="40" style="font-size: 1px; color: #fafafa; line-height: 1px;">&nbsp;-                 
+                </td>
+              </tr>
+            </table>
+      
+          </td>
+        </tr>
+      </table><!-- End 4 Columns -->
+
+          
+
+    </td>
+  </tr>
+</table><!-- End Wrapper -->
+
+<!-- Done -->
+
+</body>
+
 </html>
