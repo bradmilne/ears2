@@ -33,7 +33,7 @@
 
 .footer {
 	background: #F2F2F2;
-	min-height: 300px;
+	min-height: 10px;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -74,11 +74,12 @@
 .post-content {
 	margin: 0 auto;
 	max-width: 800px;
+	font-family: Palatino, 'Times New Roman', serif;
+	font-size: 18px;
+	line-height: 1.5;
 }
 .post-content p {
-	font-family: Georgia, sans-serif;
-	font-size: 16px;
-	line-height: 1.3;
+	
 }
 
 #mc_embed_signup{
@@ -107,6 +108,7 @@
 
 .related-posts {
 	text-align: center;
+	margin-bottom: 85px;
 }
 
 .related-posts h6 {
