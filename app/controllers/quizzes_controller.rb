@@ -39,6 +39,9 @@ class QuizzesController < ApplicationController
     Response.create!(:question_id => params[:question_id_5],:user_answer => params[:user_answer5], :correct_answer => params[:correct_answer5], :lesson_id => params[:lesson_id], :octave => params[:octave5], :user_id => params[:user_id])
     current_user.question_rating(params[:user_answer5], params[:octave5], params[:question_id_5])
     current_user.lesson_rating(params[:lesson_id])
+    @et_recommendations = current_user.et_recommendations
+    @cp_recommendations = current_user.cp_recommendations
+    
     if @score == 5
       flash[:notice] = "Perfect! You got #{@score} out of 5 on that one!"
     elsif @score == 4

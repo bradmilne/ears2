@@ -9,10 +9,25 @@
   <div class="quiz_results_options_body">
     <ul style="padding-top: 10px; padding-left: 15px;">
       <li><%= link_to 'Check Out Some Ear Training Lessons', lessons_path %></li><br>
+        <ul class="recommendations">
+        <% @et_recommendations.each do |et_recommendation| %>
+          <li><%= link_to et_recommendation[0], lesson_path(:id => et_recommendation[2]) %></li>
+        <% end %>
+        </ul>
+        <br>
+
+      
       <% if current_user.roles.first.name == 'gold' %>
       <li><%= link_to 'Work on Chord Progressions', content_gold_path %></li><br>
+        <ul class="recommendations">
+        <% @cp_recommendations.each do |cp_recommendation| %>
+          <li><%= link_to cp_recommendation[0], lesson_path(:id => cp_recommendation[2]) %></li>
+        <% end %>
+        </ul>
       <% end %>
+      <br>
       <li><%= link_to 'See Your Stats', "../../../stats/show" %></li>
+      
     </ul>
     <br>
   </div>

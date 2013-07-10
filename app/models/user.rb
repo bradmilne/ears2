@@ -327,4 +327,35 @@ class User < ActiveRecord::Base
     question_rating_to_be_rated = question_rating_to_be_rated.update_attributes(:rating => question_rating)
 
   end
+
+  def et_recommendations
+    recommendations_array = Array.new
+    lesson_ratings = LessonRating.where(:user_id => self.id).all
+    lesson_ratings.each do |lesson_rating|
+      lesson = Lesson.where(:id => lesson_rating.lesson_id).first
+      unless lesson.category != "Ear Training"
+        lesson_title = lesson.title
+        lesson_id = lesson.id
+        rating = lesson_rating.rating
+        recommendations_array << [lesson_title, rating, lesson_id]
+      end
+    end
+    return recommendations_array
+  end
+      
+  def cp_recommendations
+    recommendations_array = Array.new
+    lesson_ratings = LessonRating.where(:user_id => self.id).all
+    lesson_ratings.each do |lesson_rating|
+      lesson = Lesson.where(:id => lesson_rating.lesson_id).first
+      unless lesson.category != "Chord Progressions"
+        lesson_title = lesson.title
+        lesson_id = lesson.id
+        rating = lesson_rating.rating
+        recommendations_array << [lesson_title, rating, lesson_id]
+      end
+    end
+    return recommendations_array
+  end
+
 end
