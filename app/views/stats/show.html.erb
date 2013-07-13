@@ -37,7 +37,7 @@
   </tbody>
 </table>
 
-<% if current_user.has_role? :gold %>
+<% if current_user.roles.first.name == 'gold' or current_user.roles.first.name == 'platinum' or current_user.roles.first.name == 'admin'  %>
 <br>
 
 <div class="stats_title">

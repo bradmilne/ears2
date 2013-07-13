@@ -6,6 +6,20 @@ class Question < ActiveRecord::Base
 
   has_many :question_ratings
 
-  has_attached_file :audioclip_mp3
-  has_attached_file :audioclip_wav
+  has_attached_file :audioclip_mp3,
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+    
+   
+  has_attached_file :audioclip_wav,
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
 end

@@ -17,7 +17,7 @@
         <br>
 
       
-      <% if current_user.roles.first.name == 'gold' %>
+      <% if current_user.roles.first.name == 'gold' or current_user.roles.first.name == 'platinum' or current_user.roles.first.name == 'admin'  %>
       <li><%= link_to 'Work on Chord Progressions', content_gold_path %></li><br>
         <ul class="recommendations">
         <% @cp_recommendations.each do |cp_recommendation| %>

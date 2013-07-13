@@ -21,7 +21,7 @@
    <li>
     <%= link_to 'Ear Training', lessons_path %>
     </li>
-    <% if current_user.roles.first.name == 'gold' %>
+    <% if current_user.roles.first.name == 'gold' or current_user.roles.first.name == 'platinum' or current_user.roles.first.name == 'admin'  %>
       <li><%= link_to 'Chord Progressions', content_gold_path %></li>
     <% end %>
     <li>
