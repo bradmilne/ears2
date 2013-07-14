@@ -73,7 +73,7 @@ Play the scale vertically and horizontally. Mix in arpeggios and some licks that
 
 <b>Ear Training</b> - Time: 15 Minutes <br /><br />
 
-I built Perfect Ear Training to make this part of my practice sessions way more efficient. I really do believe it's the key to getting better fast. I like to work on intervals and chord progressions where I'm having difficulties and track my progress from practice session to practice session.<br /> <br />
+I built <a href="http://www.eartracker.com">Ear Tracker</a> to make this part of my practice sessions way more efficient. I really do believe it's the key to getting better fast. I like to work on intervals and chord progressions where I'm having difficulties and track my progress from practice session to practice session.<br /> <br />
 
 Improving my ears means that when I pick the specific technique or theory that I'm working on, I know that I'll be able to 'hear' the theory or style much better and immediately recognize the intervals that give it its particular sound. Whether it's working on the minor scales in gypsy jazz or hearing the style of a new song I'm transcribing, this is how I make sure I'm ready.<br /> <br />
 
