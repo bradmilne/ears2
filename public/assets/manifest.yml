@@ -11,6 +11,12 @@ design.png: design-bc896d6fe282e6c0086cffeb11025ae3.png
 design/index.png: design-bc896d6fe282e6c0086cffeb11025ae3.png
 develop.png: develop-c6f422225c0b55aa1a64b2e5d572a038.png
 develop/index.png: develop-c6f422225c0b55aa1a64b2e5d572a038.png
+ear_tutor2.png: ear_tutor2-ad6c0385cc5face6394ce3cf01a601d4.png
+ear_tutor2/index.png: ear_tutor2-ad6c0385cc5face6394ce3cf01a601d4.png
+eartutor_black.png: eartutor_black-f4918fe7b8737ad504a7c5947395a27a.png
+eartutor_black/index.png: eartutor_black-f4918fe7b8737ad504a7c5947395a27a.png
+eartutor_white.png: eartutor_white-22bdcd4e768605cf997a83343340f0fe.png
+eartutor_white/index.png: eartutor_white-22bdcd4e768605cf997a83343340f0fe.png
 et_screenshot.png: et_screenshot-73994486f03bb118d0fe861789daa959.png
 et_screenshot/index.png: et_screenshot-73994486f03bb118d0fe861789daa959.png
 face.png: face-5de7cfe47adda762f2715d8d5370c5da.png
@@ -155,8 +161,8 @@ twt.png: twt-6690f140f4e86c4f2cae67cdde86da0d.png
 twt/index.png: twt-6690f140f4e86c4f2cae67cdde86da0d.png
 application.js: application-0977736f184557c71edaa3d4f9dd608f.js
 application/index.js: application-0977736f184557c71edaa3d4f9dd608f.js
-application.css: application-891f0611743e44ab95099ea0f127e2a8.css
-application/index.css: application-891f0611743e44ab95099ea0f127e2a8.css
+application.css: application-c1ecea2f6bc6b283c3c8ef76a1f7536f.css
+application/index.css: application-c1ecea2f6bc6b283c3c8ef76a1f7536f.css
 active_admin/admin_notes_icon.png: active_admin/admin_notes_icon-25b05cd8197f7a271d0624853a6dbdd5.png
 active_admin/admin_notes_icon/index.png: active_admin/admin_notes_icon-25b05cd8197f7a271d0624853a6dbdd5.png
 active_admin/datepicker/datepicker-header-bg.png: active_admin/datepicker/datepicker-header-bg-6f0baad739953cb1a0413c031841e82f.png
