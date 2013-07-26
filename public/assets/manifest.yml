@@ -5,6 +5,8 @@ arrow-down.png: arrow-down-0bfacca51b0af0872bc1ab211d87ae72.png
 arrow-down/index.png: arrow-down-0bfacca51b0af0872bc1ab211d87ae72.png
 body_bg.jpg: body_bg-80f03464f2572a26c9e7b4eab22f24da.jpg
 body_bg/index.jpg: body_bg-80f03464f2572a26c9e7b4eab22f24da.jpg
+brad.png: brad-12cbdb1b95ac5b468977e76c8ada78a7.png
+brad/index.png: brad-12cbdb1b95ac5b468977e76c8ada78a7.png
 contact_icos.png: contact_icos-4b9e37146d453055c5cfb33feeafc005.png
 contact_icos/index.png: contact_icos-4b9e37146d453055c5cfb33feeafc005.png
 design.png: design-bc896d6fe282e6c0086cffeb11025ae3.png
@@ -161,8 +163,8 @@ twt.png: twt-6690f140f4e86c4f2cae67cdde86da0d.png
 twt/index.png: twt-6690f140f4e86c4f2cae67cdde86da0d.png
 application.js: application-0977736f184557c71edaa3d4f9dd608f.js
 application/index.js: application-0977736f184557c71edaa3d4f9dd608f.js
-application.css: application-f268aa0313311f558a0c4910e9c5a9e9.css
-application/index.css: application-f268aa0313311f558a0c4910e9c5a9e9.css
+application.css: application-4c817507f1dfbcacf119ce8c976a9134.css
+application/index.css: application-4c817507f1dfbcacf119ce8c976a9134.css
 active_admin/admin_notes_icon.png: active_admin/admin_notes_icon-25b05cd8197f7a271d0624853a6dbdd5.png
 active_admin/admin_notes_icon/index.png: active_admin/admin_notes_icon-25b05cd8197f7a271d0624853a6dbdd5.png
 active_admin/datepicker/datepicker-header-bg.png: active_admin/datepicker/datepicker-header-bg-6f0baad739953cb1a0413c031841e82f.png
