@@ -69,6 +69,8 @@
 	    </footer>
     </div> <!--! end of #main -->
 
+
+<% if Rails.env == "production" %>
     <!-- CrazyEgg Tracking -->
     <script type="text/javascript">
 setTimeout(function(){var a=document.createElement("script");
@@ -96,5 +98,6 @@ loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure"
 /* custom configuration goes here (www.olark.com/documentation) */
 olark.identify('9669-208-10-1804');/*]]>*/</script><noscript><a href="https://www.olark.com/site/9669-208-10-1804/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
 <!-- end olark code -->
+ <% end %>
   </body>
 </html>
